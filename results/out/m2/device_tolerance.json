@@ -1,0 +1,314 @@
+{
+ "task": "M2 device-specific CAVITY-LINE fabrication tolerance at the device lattice constant a = 586.735 um (closing-report Sec. 5.3 open item)",
+ "rng": "deterministic - no RNG",
+ "status": "complete",
+ "generated": "2026-07-27 10:28:53",
+ "constants": {
+  "a_device_um": 586.735322,
+  "a_bulk_study_um": 638.0131800239526,
+  "c_um_GHz": 299792.458,
+  "f_operating_GHz": 145.0,
+  "box": {
+   "dr_frac": 0.02,
+   "dt_frac": 0.05,
+   "da_frac": 0.02
+  },
+  "cavity": {
+   "s": 0.2,
+   "rdef": 1.15,
+   "res": 18,
+   "fcen": 0.29,
+   "df": 0.06
+  }
+ },
+ "baseline": {
+  "nu0": 0.28378030212629274,
+  "f0_GHz": 144.99756724450947,
+  "nu0_stored_deep_12000p": 0.28378600407268306,
+  "nu0_stored_chunk1_1200p": 0.28378793196610247,
+  "dev_vs_stored_deep_nu": -5.701946390324064e-06,
+  "dev_vs_stored_deep_GHz": -0.0029134099476380015,
+  "dev_vs_stored_1200p_nu": -7.629839809730754e-06,
+  "dev_vs_stored_1200p_GHz": -0.0038984672388835406,
+  "lo_edge_GHz": 137.46602272101578,
+  "hi_edge_GHz": 177.878579760626,
+  "margin_to_lo_GHz": 7.531544523493693,
+  "margin_to_hi_GHz": 32.88101251611653,
+  "geometry_identity_at_nominal": true,
+  "n_geometry_objects": 119,
+  "detuning_vs_145GHz_GHz": -0.0024327554905312354
+ },
+ "perturbations": [
+  {
+   "case": "r_hi",
+   "params": {
+    "r_over_a": 0.306,
+    "t_over_a": 0.5,
+    "r_scale": 1.02,
+    "t_scale": 1.0,
+    "stack_from": null
+   },
+   "nu0": 0.28550610784520675,
+   "f0_GHz": 145.87936780960942,
+   "shift_GHz": 0.881800565099951,
+   "edge_shift_GHz": 0.7821596357553947,
+   "edge_shift_hi_GHz": 3.227667544213622,
+   "lo_edge_GHz": 138.24818235677117,
+   "hi_edge_GHz": 181.10624730483963,
+   "edge_src": "out/m2/tolerance.json:table['r_hi (+2%)'].lo_edge_nu",
+   "margin_GHz": 7.631185452838253,
+   "margin_shift_GHz": 0.09964092934455948,
+   "margin_to_hi_GHz": 35.22687949523021,
+   "in_gap": true,
+   "detuning_vs_145GHz_GHz": 0.8793678096094197,
+   "harminv_err": 4.7023921438880665e-09,
+   "Q_16a_cell": 8851.476784494509
+  },
+  {
+   "case": "r_lo",
+   "params": {
+    "r_over_a": 0.294,
+    "t_over_a": 0.5,
+    "r_scale": 0.98,
+    "t_scale": 1.0,
+    "stack_from": null
+   },
+   "nu0": 0.2820518002026886,
+   "f0_GHz": 144.11438905341532,
+   "shift_GHz": -0.8831781910941459,
+   "edge_shift_GHz": -0.6951836138435067,
+   "edge_shift_hi_GHz": -2.866103842322356,
+   "lo_edge_GHz": 136.77083910717226,
+   "hi_edge_GHz": 175.01247591830364,
+   "edge_src": "out/m2/tolerance.json:table['r_lo (-2%)'].lo_edge_nu",
+   "margin_GHz": 7.3435499462430585,
+   "margin_shift_GHz": -0.18799457725063462,
+   "margin_to_hi_GHz": 30.898086864888313,
+   "in_gap": true,
+   "detuning_vs_145GHz_GHz": -0.8856109465846771,
+   "harminv_err": 1.2527599621552166e-09,
+   "Q_16a_cell": 8082.577226451618
+  },
+  {
+   "case": "t_hi",
+   "params": {
+    "r_over_a": 0.3,
+    "t_over_a": 0.525,
+    "r_scale": 1.0,
+    "t_scale": 1.05,
+    "stack_from": null
+   },
+   "nu0": 0.2813944276024182,
+   "f0_GHz": 143.77850447263847,
+   "shift_GHz": -1.2190627718709948,
+   "edge_shift_GHz": -1.3529002932661858,
+   "edge_shift_hi_GHz": -1.5334971913055027,
+   "lo_edge_GHz": 136.1131224277496,
+   "hi_edge_GHz": 176.34508256932048,
+   "edge_src": "out/m2/tolerance.json:table['t_hi (+5%)'].lo_edge_nu",
+   "margin_GHz": 7.665382044888872,
+   "margin_shift_GHz": 0.13383752139517924,
+   "margin_to_hi_GHz": 32.56657809668201,
+   "in_gap": true,
+   "detuning_vs_145GHz_GHz": -1.221495527361526,
+   "harminv_err": 8.370076897356072e-09,
+   "Q_16a_cell": 8668.852687687237
+  },
+  {
+   "case": "t_lo",
+   "params": {
+    "r_over_a": 0.3,
+    "t_over_a": 0.475,
+    "r_scale": 1.0,
+    "t_scale": 0.95,
+    "stack_from": null
+   },
+   "nu0": 0.2876137853719511,
+   "f0_GHz": 146.95628580435397,
+   "shift_GHz": 1.958718559844499,
+   "edge_shift_GHz": 1.7628675958620332,
+   "edge_shift_hi_GHz": 1.963224414008883,
+   "lo_edge_GHz": 139.2288903168778,
+   "hi_edge_GHz": 179.8418041746349,
+   "edge_src": "out/m2/tolerance.json:table['t_lo (-5%)'].lo_edge_nu",
+   "margin_GHz": 7.727395487476173,
+   "margin_shift_GHz": 0.1958509639824797,
+   "margin_to_hi_GHz": 32.88551837028092,
+   "in_gap": true,
+   "detuning_vs_145GHz_GHz": 1.9562858043539677,
+   "harminv_err": 1.0214951418998638e-09,
+   "Q_16a_cell": 7928.060585921719
+  },
+  {
+   "case": "stack",
+   "params": {
+    "r_over_a": 0.294,
+    "t_over_a": 0.525,
+    "r_scale": 0.98,
+    "t_scale": 1.05,
+    "stack_from": [
+     "r_lo",
+     "t_hi"
+    ]
+   },
+   "nu0": 0.27962916302890284,
+   "f0_GHz": 142.87654240273864,
+   "shift_GHz": -2.121024841770833,
+   "edge_shift_GHz": -2.0480839071096923,
+   "edge_shift_hi_GHz": -4.399601033627859,
+   "lo_edge_GHz": 135.4179388139061,
+   "hi_edge_GHz": 173.47897872699815,
+   "edge_src": "out/m2/tolerance.json:table['r_lo (-2%)'] + table['t_hi (+5%)'] (linear superposition of the two measured single-axis edge shifts)",
+   "margin_GHz": 7.4586035888325455,
+   "margin_shift_GHz": -0.0729409346611476,
+   "margin_to_hi_GHz": 30.602436324259514,
+   "in_gap": true,
+   "detuning_vs_145GHz_GHz": -2.123457597261364,
+   "harminv_err": 3.0591880371594966e-10,
+   "Q_16a_cell": 8199.27931729346
+  }
+ ],
+ "a_error_analytic": {
+  "note": "Maxwell scale invariance: nu = a/lambda depends only on (r/a, t/a, eps), so a -> a(1+da) sends EVERY frequency to f/(1+da) -- cavity line and both gap edges together. No simulation performed or needed.",
+  "da_frac": [
+   -0.02,
+   0.02
+  ],
+  "cavity_line_GHz": {
+   "a_minus_2pct": 147.95670126990763,
+   "a_plus_2pct": 142.15447769069556
+  },
+  "cavity_line_shift_GHz": {
+   "a_minus_2pct": 2.959134025398157,
+   "a_plus_2pct": -2.843089553813911
+  },
+  "margin_GHz": {
+   "a_minus_2pct": 7.685249513769075,
+   "a_plus_2pct": 7.383867179895778
+  },
+  "margin_shift_GHz": {
+   "a_minus_2pct": 0.15370499027538198,
+   "a_plus_2pct": -0.1476773435979153
+  },
+  "interpretation": "the a-error is a cavity/qubit DETUNING axis (-+2.84 to 2.96 GHz on the 145 GHz line), NOT an in-gap axis: it moves line and edges together, so the margin changes only by the 1/(1+da) factor."
+ },
+ "worst_case_stack": {
+  "role": "cross-check of linear superposition, NOT the worst point of the box (see verdict.worst_measured_rt_case)",
+  "r_over_a": 0.294,
+  "t_over_a": 0.525,
+  "from_single_cases": [
+   "r_lo",
+   "t_hi"
+  ],
+  "cavity_line_GHz": 142.87654240273864,
+  "lo_edge_GHz": 135.4179388139061,
+  "margin_GHz": 7.4586035888325455,
+  "margin_with_a_plus2pct_GHz": 7.312356459639751,
+  "predicted_margin_shift_linear_GHz": -0.05415705585545538,
+  "measured_margin_shift_GHz": -0.0729409346611476,
+  "superposition_residual_GHz": -0.01878387880569221,
+  "method": "cavity line MEASURED directly at the stacked (r,t); gap edge from linear superposition of the two measured single-axis bulk edge shifts; a-axis applied analytically."
+ },
+ "box_scan": {
+  "purpose": "the margin is NOT monotonic in the box: both t signs and r+2% INCREASE the margin, so the box minimum is not at a corner and corner-stacking alone would miss it. A separable quadratic through the three measured points on each axis locates the in-box minimum.",
+  "r_axis": {
+   "quad_a_GHz_per_pct2": -0.011044205988259392,
+   "quad_b_GHz_per_pct": 0.07190887664879853,
+   "argmin_pct": -2.0,
+   "min_margin_shift_GHz": -0.18799457725063462,
+   "shape": "concave (minimum at an endpoint)"
+  },
+  "t_axis": {
+   "quad_a_GHz_per_pct2": 0.0065937697075531786,
+   "quad_b_GHz_per_pct": -0.006201344258730046,
+   "argmin_pct": 0.47024270893373726,
+   "min_margin_shift_GHz": -0.001458068461627948,
+   "shape": "convex (interior minimum)"
+  },
+  "model_box_min_margin_GHz": 7.342091877781431,
+  "model_box_min_at": {
+   "dr_pct": -2.0,
+   "dt_pct": 0.47024270893373726
+  },
+  "caveat": "3 points per axis -> quadratic interpolation, not a measured point; used only to confirm that no interior point beats the measured worst case by a meaningful amount."
+ },
+ "verdict": {
+  "min_margin_GHz": 7.198129291942579,
+  "min_margin_rt_only_GHz": 7.342091877781431,
+  "worst_measured_rt_case": "r_lo",
+  "worst_measured_rt_margin_GHz": 7.3435499462430585,
+  "in_gap": true,
+  "binding_axis": "r_lo",
+  "baseline_margin_GHz": 7.531544523493693,
+  "margin_erosion_GHz": 0.33341523155111386,
+  "margin_erosion_pct_of_baseline": 4.426917088667106,
+  "note": "min_margin = worst of {every measured (r,t) point, the separable-quadratic in-box minimum} times the analytic 1/(1+da) factor at da=+2% (the worst a sign for the margin). 'in_gap' asks whether the CAVITY LINE stays inside the perturbed gap. NOTE the worst point is NOT the corner stack: both t signs and r+2% raise the cavity line faster than they raise the lower gap edge, so the margin has an interior maximum structure and the box minimum sits at r-2% with t near nominal."
+ },
+ "method": {
+  "cavity": "scripts/m2_3d_l3.py driven as a module (no solver or geometry change): isolated 3D L3, 16a x 12*sqrt3/2 a x 4.5a supercell, PML 1a on all six faces, s=0.20, rdef=1.15, res 18 + subpixel averaging, --lossless, Hz dipole at the cavity centre, mirror phases (+1,-1,+1), harminv monitor (0.30,0.20,0.0), fcen 0.29 df 0.06, 1200-period ring-down in 4 chunks of 300 with the established trailing-window harminv.",
+  "cell_caveat": "the 16a cell's Q ~ 8.6e3 is a known lateral-leakage artifact (physical ceiling 2.7-3.0e4, decisions.md 2026-07-24); irrelevant here because only FREQUENCY shifts are reported and every case uses the same cell as the stored baseline.",
+  "truncation": "1200 periods vs the stored 12000-period deep run: nu 0.2837879 -> 0.2837860, i.e. 1.9e-6 in nu = 0.001 GHz at the device a, negligible against ~1 GHz perturbation shifts.",
+  "geometry_deviation": "hole-lattice EXTENT frozen at nominal r/a=0.30 so an r perturbation cannot change the hole count; radii perturbed. Asserted object-for-object identical to the original generator at nominal parameters.",
+  "edges": "REUSED, not re-run: bulk-gap edge motion from out/m2/tolerance.json (MPB run_zeven res 20, K/M edge k-points), transferred to the device a by scale invariance f = nu*c/a_device.",
+  "a_axis": "analytic (Maxwell scale invariance); no run.",
+  "stack_selection": "the (r,t) sign pair minimising margin = f_cav - f_lo_edge, evaluated by linear superposition of the four measured single-axis margin shifts, then run directly."
+ },
+ "timings": [
+  {
+   "case": "baseline",
+   "wall_seconds": 904.4,
+   "periods": 1200.0
+  },
+  {
+   "case": "r_hi",
+   "wall_seconds": 1270.7,
+   "periods": 1200.0
+  },
+  {
+   "case": "r_lo",
+   "wall_seconds": 1000.1,
+   "periods": 1200.0
+  },
+  {
+   "case": "t_hi",
+   "wall_seconds": 952.1,
+   "periods": 1200.0
+  },
+  {
+   "case": "t_lo",
+   "wall_seconds": 961.2,
+   "periods": 1200.0
+  },
+  {
+   "case": "stack",
+   "wall_seconds": 980.8,
+   "periods": 1200.0
+  }
+ ],
+ "provenance": {
+  "cavity_runs": [
+   "out/m2/devtol/l3_3d_devtol_baseline_s020_rdef115_res18_lossless.json",
+   "out/m2/devtol/l3_3d_devtol_r_hi_s020_rdef115_res18_lossless.json",
+   "out/m2/devtol/l3_3d_devtol_r_lo_s020_rdef115_res18_lossless.json",
+   "out/m2/devtol/l3_3d_devtol_t_hi_s020_rdef115_res18_lossless.json",
+   "out/m2/devtol/l3_3d_devtol_t_lo_s020_rdef115_res18_lossless.json",
+   "out/m2/devtol/l3_3d_devtol_stack_s020_rdef115_res18_lossless.json"
+  ],
+  "bulk_edges_src": "out/m2/tolerance.json:table (baseline, r_lo, r_hi, t_lo, t_hi)",
+  "stored_cavity_line_src": "out/m2/l3_3d_deep_s020_rdef115_res18_lossless.json:result.headline_in_gap.nu",
+  "a_device_src": "photonics.json:geometry.a_um_precise",
+  "cavity_line_gap_src": "photonics.json:modes.cavity_line_gap_GHz",
+  "cavity_line_gap_stored_GHz": [
+   137.5,
+   177.9
+  ],
+  "scripts": [
+   "scripts/m2_device_tolerance.py",
+   "scripts/m2_device_tolerance.sh",
+   "scripts/fig_device_tolerance.py"
+  ],
+  "versions": {
+   "python": "3.13.3"
+  }
+ }
+}

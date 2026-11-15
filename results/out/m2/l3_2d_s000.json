@@ -1,0 +1,33 @@
+{
+ "task": "M2 2D L3 production run",
+ "rng": "deterministic - no RNG",
+ "meep_version": "1.34.0",
+ "params": {
+  "s": 0.0,
+  "mirror_phase_X": 1,
+  "mirror_phase_Y": -1,
+  "r_over_a": 0.3,
+  "eps_eff": 7.698245769014287,
+  "res": 20,
+  "cell": [
+   18.0,
+   10.392304845413264
+  ],
+  "dpml": 1.0,
+  "a_final_um": 602.886947874021,
+  "fcen_first_pass": 0.27,
+  "until_after_sources": 52958.118716205914,
+  "ringdown_tau": 16549.412098814348,
+  "T_over_tau": 3.2
+ },
+ "result": {
+  "nu0": 0.2698183194491378,
+  "f0_GHz": 134.17025776777783,
+  "Q_2d": 14035.233680492276,
+  "Q_rough_firstpass": 14028.262000927725,
+  "in_gap": true,
+  "parity_x": -0.9999999254903216,
+  "parity_y": 1.0,
+  "n_harminv_modes": 1
+ }
+}

@@ -1,0 +1,531 @@
+{
+  "description": "T1 thermometry calibration: net soft half-step width vs Gamma at the v0.3 production operating point (nu=-2.4, Omega=5, i_ac=3.5, measured Beenakker tau=0.8 CPR), with a sinusoidal-CPR control subtracting the soft-estimator transit floor at every Gamma.",
+  "purpose": "Inverse calibration W_net -> Gamma -> T_e = Gamma * E_J/k_B. Supersedes out/survival_curve.json as a MEASUREMENT map; the old hard-estimator survival numbers are reproduced here under 'survival_hard_ens_old_convention' for continuity.",
+  "operating_point": {
+    "nu": -2.5,
+    "Omega": 5.208333333333333,
+    "i_ac": 4.166666666667,
+    "alpha": 0.8000000000000641,
+    "is_reference_filling": false,
+    "omega_and_iac_source": "out/fingerprint/nu_m2_5.json",
+    "cpr_model": "measured Beenakker short junction, tau=0.8, normalized max=1 (material.json harmonics_by_tau['0.8'])",
+    "cpr_raw": [
+      0.9832251958563236,
+      -0.18418877711398698,
+      0.0522460683813405,
+      -0.016530345167577707,
+      0.00550241947217135
+    ],
+    "cpr_normalized": [
+      0.9832251977193381,
+      -0.18418877746298778,
+      0.05224606848033632,
+      -0.016530345198899395,
+      0.005502419482597332
+    ],
+    "cpr_renorm_factor": 0.9999999981052006,
+    "control_cpr": [
+      1.0
+    ]
+  },
+  "grid": {
+    "i_dc_start": 2.221354166666668,
+    "i_dc_stop": 3.221354166666668,
+    "i_dc_step": 0.005,
+    "n_idc": 201,
+    "i_ac": 4.166666666667,
+    "window_rationale": "deterministic half-step at 2.540..2.730 (skewed) and v=2.5 transit at 2.600..2.680 (sinusoidal); >=0.4 margin both sides"
+  },
+  "numerics": {
+    "noisy_integrator": "stochastic-Heun (additive noise)",
+    "spp": 100,
+    "n_transient": 157,
+    "n_avg": 313,
+    "n_real_signal": 160,
+    "n_real_control": 80,
+    "v_target": 2.6041666666666665,
+    "tol_hard": 0.025,
+    "sigma_k_soft": 0.025,
+    "v_resolution": 0.016640042598509052,
+    "det_integrator": "RK4 spp=60 150/300 T (validated fingerprint)",
+    "n_bootstrap": 2000,
+    "bootstrap_seed": 20260804777
+  },
+  "seed_formula": "20260804000 + round(10000*Gamma) (+500000 for control, +1000000*round(10*|nu-(-2.4)|) for filling)",
+  "deterministic_reference": {
+    "w_hard_skewed": 0.19999999999999574,
+    "w_soft_skewed": 0.20324652337208962,
+    "w_hard_sinusoidal": 0.04499999999999904,
+    "w_soft_sinusoidal": 0.058887634679943644,
+    "w_soft_net": 0.14435888869214597,
+    "note": "w_hard_skewed on this refined grid should reproduce the 0.200 of out/fingerprint/nu_m2_4.json to within one i_dc step; w_soft_sinusoidal is the ohmic-transit floor sigma_k*sqrt(2pi)/slope, not a step."
+  },
+  "gamma_grid": [
+    0.005,
+    0.007,
+    0.01,
+    0.014,
+    0.018,
+    0.021,
+    0.025,
+    0.028,
+    0.035,
+    0.042,
+    0.055,
+    0.07,
+    0.085,
+    0.1
+  ],
+  "per_gamma": [
+    {
+      "Gamma": 0.005,
+      "EJ_over_kBT": 200.0,
+      "seed_skewed": 20261804050,
+      "seed_sin": 20262304050,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.18044278604535474,
+      "soft_skewed_sem": 0.00029630535919759193,
+      "soft_skewed_ci95": [
+        0.1798415115422153,
+        0.18101790567398532
+      ],
+      "soft_sin_mean": 0.05920902389072837,
+      "soft_sin_sem": 0.00024167274144683477,
+      "soft_sin_ci95": [
+        0.05876750300005375,
+        0.05967872569337148
+      ],
+      "soft_net_mean": 0.12123376215462636,
+      "soft_net_sem": 0.00038236445944627573,
+      "soft_net_ci95": [
+        0.12016278584884382,
+        0.12225040267393157
+      ],
+      "soft_net_over_det": 0.8398080870043594,
+      "hard_per_real_mean": 0.17456249999999626,
+      "hard_per_real_std": 0.006427816417677881,
+      "hard_ens_mean_staircase": 0.17499999999999627,
+      "soft_ens_mean_staircase": 0.1804461458550473,
+      "survival_hard_ens_old_convention": 0.875
+    },
+    {
+      "Gamma": 0.007,
+      "EJ_over_kBT": 142.85714285714286,
+      "seed_skewed": 20261804070,
+      "seed_sin": 20262304070,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.17182230250901853,
+      "soft_skewed_sem": 0.0002766464771593542,
+      "soft_skewed_ci95": [
+        0.17130295033095935,
+        0.17236247793268525
+      ],
+      "soft_sin_mean": 0.05899896513717755,
+      "soft_sin_sem": 0.0002979819887602492,
+      "soft_sin_ci95": [
+        0.05838960750442313,
+        0.05956732117277563
+      ],
+      "soft_net_mean": 0.11282333737184098,
+      "soft_net_sem": 0.00040660366322771164,
+      "soft_net_ci95": [
+        0.11173562915818372,
+        0.11397287042826212
+      ],
+      "soft_net_over_det": 0.7815475610403426,
+      "hard_per_real_mean": 0.16471874999999647,
+      "hard_per_real_std": 0.007031977163656503,
+      "hard_ens_mean_staircase": 0.16499999999999648,
+      "soft_ens_mean_staircase": 0.17185761868527447,
+      "survival_hard_ens_old_convention": 0.825
+    },
+    {
+      "Gamma": 0.01,
+      "EJ_over_kBT": 100.0,
+      "seed_skewed": 20261804100,
+      "seed_sin": 20262304100,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.1608481350344091,
+      "soft_skewed_sem": 0.0003464067462293162,
+      "soft_skewed_ci95": [
+        0.16016223886281147,
+        0.1615396555109966
+      ],
+      "soft_sin_mean": 0.059385448479017965,
+      "soft_sin_sem": 0.0003263145390589767,
+      "soft_sin_ci95": [
+        0.058736464089278566,
+        0.060006190822165066
+      ],
+      "soft_net_mean": 0.10146268655539112,
+      "soft_net_sem": 0.0004758979010611985,
+      "soft_net_ci95": [
+        0.1001560480406464,
+        0.10280319142171804
+      ],
+      "soft_net_over_det": 0.7028502884347247,
+      "hard_per_real_mean": 0.15349999999999672,
+      "hard_per_real_std": 0.008103109116782753,
+      "hard_ens_mean_staircase": 0.1549999999999967,
+      "soft_ens_mean_staircase": 0.1607403105956526,
+      "survival_hard_ens_old_convention": 0.775
+    },
+    {
+      "Gamma": 0.014,
+      "EJ_over_kBT": 71.42857142857143,
+      "seed_skewed": 20261804140,
+      "seed_sin": 20262304140,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.147197915341445,
+      "soft_skewed_sem": 0.0003941371472332947,
+      "soft_skewed_ci95": [
+        0.14640333700230615,
+        0.14800766610058833
+      ],
+      "soft_sin_mean": 0.05850952790242264,
+      "soft_sin_sem": 0.0003919039480903241,
+      "soft_sin_ci95": [
+        0.057771479636138406,
+        0.05927150523821067
+      ],
+      "soft_net_mean": 0.08868838743902235,
+      "soft_net_sem": 0.0005558172319728701,
+      "soft_net_ci95": [
+        0.08713183176409547,
+        0.09023618646444992
+      ],
+      "soft_net_over_det": 0.6143604196632165,
+      "hard_per_real_mean": 0.13968749999999702,
+      "hard_per_real_std": 0.008254739442916253,
+      "hard_ens_mean_staircase": 0.13999999999999702,
+      "soft_ens_mean_staircase": 0.1470329967720414,
+      "survival_hard_ens_old_convention": 0.7
+    },
+    {
+      "Gamma": 0.018,
+      "EJ_over_kBT": 55.55555555555556,
+      "seed_skewed": 20261804180,
+      "seed_sin": 20262304180,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.1350145764673276,
+      "soft_skewed_sem": 0.00038632885660311956,
+      "soft_skewed_ci95": [
+        0.13429778227525507,
+        0.13577535779585378
+      ],
+      "soft_sin_mean": 0.058247240206316345,
+      "soft_sin_sem": 0.0004782197562014065,
+      "soft_sin_ci95": [
+        0.0573102334990655,
+        0.05919343549564398
+      ],
+      "soft_net_mean": 0.07676733626101125,
+      "soft_net_sem": 0.0006147716004058795,
+      "soft_net_ci95": [
+        0.07510434677961109,
+        0.07846512429678829
+      ],
+      "soft_net_over_det": 0.5317811529065052,
+      "hard_per_real_mean": 0.1268437499999973,
+      "hard_per_real_std": 0.007962606692905863,
+      "hard_ens_mean_staircase": 0.12999999999999723,
+      "soft_ens_mean_staircase": 0.13443969396831912,
+      "survival_hard_ens_old_convention": 0.65
+    },
+    {
+      "Gamma": 0.021,
+      "EJ_over_kBT": 47.61904761904761,
+      "seed_skewed": 20261804210,
+      "seed_sin": 20262304210,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.1264360432284528,
+      "soft_skewed_sem": 0.00038057747724094305,
+      "soft_skewed_ci95": [
+        0.12567009126326548,
+        0.12720010728462317
+      ],
+      "soft_sin_mean": 0.05868903458509116,
+      "soft_sin_sem": 0.00048457987068678435,
+      "soft_sin_ci95": [
+        0.05777578237328652,
+        0.05962812529822001
+      ],
+      "soft_net_mean": 0.06774700864336165,
+      "soft_net_sem": 0.0006161630200343909,
+      "soft_net_ci95": [
+        0.06604196596504547,
+        0.06942432491133665
+      ],
+      "soft_net_over_det": 0.4692957202506334,
+      "hard_per_real_mean": 0.11709374999999751,
+      "hard_per_real_std": 0.008531699584416873,
+      "hard_ens_mean_staircase": 0.11499999999999755,
+      "soft_ens_mean_staircase": 0.1255978829232144,
+      "survival_hard_ens_old_convention": 0.575
+    },
+    {
+      "Gamma": 0.025,
+      "EJ_over_kBT": 40.0,
+      "seed_skewed": 20261804250,
+      "seed_sin": 20262304250,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.1159956630873528,
+      "soft_skewed_sem": 0.00045198885230378707,
+      "soft_skewed_ci95": [
+        0.11514081804189628,
+        0.11687319695628405
+      ],
+      "soft_sin_mean": 0.05784826518321051,
+      "soft_sin_sem": 0.0005638897224680101,
+      "soft_sin_ci95": [
+        0.05679089128613788,
+        0.05896595224694245
+      ],
+      "soft_net_mean": 0.05814739790414229,
+      "soft_net_sem": 0.0007226794183536322,
+      "soft_net_ci95": [
+        0.056174865794953836,
+        0.06008230567014617
+      ],
+      "soft_net_over_det": 0.4027974891670517,
+      "hard_per_real_mean": 0.10609374999999774,
+      "hard_per_real_std": 0.009461472271648107,
+      "hard_ens_mean_staircase": 0.10499999999999776,
+      "soft_ens_mean_staircase": 0.1153458515316875,
+      "survival_hard_ens_old_convention": 0.525
+    },
+    {
+      "Gamma": 0.028,
+      "EJ_over_kBT": 35.714285714285715,
+      "seed_skewed": 20261804280,
+      "seed_sin": 20262304280,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.10886057018853648,
+      "soft_skewed_sem": 0.00045007505196481323,
+      "soft_skewed_ci95": [
+        0.10795609819378446,
+        0.10977671146702153
+      ],
+      "soft_sin_mean": 0.058904042587976234,
+      "soft_sin_sem": 0.0005862794294645217,
+      "soft_sin_ci95": [
+        0.057723333954622494,
+        0.05999487306584471
+      ],
+      "soft_net_mean": 0.04995652760056025,
+      "soft_net_sem": 0.0007391150937535874,
+      "soft_net_ci95": [
+        0.04796122512793975,
+        0.05205337751239904
+      ],
+      "soft_net_over_det": 0.3460578565902897,
+      "hard_per_real_mean": 0.0984374999999979,
+      "hard_per_real_std": 0.010448849655320542,
+      "hard_ens_mean_staircase": 0.09499999999999797,
+      "soft_ens_mean_staircase": 0.10814367280839657,
+      "survival_hard_ens_old_convention": 0.475
+    },
+    {
+      "Gamma": 0.035,
+      "EJ_over_kBT": 28.57142857142857,
+      "seed_skewed": 20261804350,
+      "seed_sin": 20262304350,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.0958507304644175,
+      "soft_skewed_sem": 0.0004996140671093648,
+      "soft_skewed_ci95": [
+        0.09486451776014534,
+        0.0968011932865387
+      ],
+      "soft_sin_mean": 0.059259958817913704,
+      "soft_sin_sem": 0.0006365122278308329,
+      "soft_sin_ci95": [
+        0.05804805491929821,
+        0.06053395844198853
+      ],
+      "soft_net_mean": 0.036590771646503796,
+      "soft_net_sem": 0.000809173672478122,
+      "soft_net_ci95": [
+        0.03433055931815682,
+        0.038753138367240494
+      ],
+      "soft_net_over_det": 0.2534708598688081,
+      "hard_per_real_mean": 0.08337499999999823,
+      "hard_per_real_std": 0.010272237727220093,
+      "hard_ens_mean_staircase": 0.0799999999999983,
+      "soft_ens_mean_staircase": 0.09518907200204686,
+      "survival_hard_ens_old_convention": 0.4
+    },
+    {
+      "Gamma": 0.042,
+      "EJ_over_kBT": 23.809523809523807,
+      "seed_skewed": 20261804420,
+      "seed_sin": 20262304420,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.08702905926094509,
+      "soft_skewed_sem": 0.00048815346109982023,
+      "soft_skewed_ci95": [
+        0.08610692452637705,
+        0.08796866159326534
+      ],
+      "soft_sin_mean": 0.05813029982884328,
+      "soft_sin_sem": 0.000655531693307831,
+      "soft_sin_ci95": [
+        0.05684763512704264,
+        0.05936002347994508
+      ],
+      "soft_net_mean": 0.02889875943210181,
+      "soft_net_sem": 0.0008173222146220949,
+      "soft_net_ci95": [
+        0.026746901046431973,
+        0.031121026466222702
+      ],
+      "soft_net_over_det": 0.200186907047547,
+      "hard_per_real_mean": 0.07337499999999844,
+      "hard_per_real_std": 0.010210827894412074,
+      "hard_ens_mean_staircase": 0.0749999999999984,
+      "soft_ens_mean_staircase": 0.08598580760080161,
+      "survival_hard_ens_old_convention": 0.375
+    },
+    {
+      "Gamma": 0.055,
+      "EJ_over_kBT": 18.181818181818183,
+      "seed_skewed": 20261804550,
+      "seed_sin": 20262304550,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.07670815803173117,
+      "soft_skewed_sem": 0.0005811218388411077,
+      "soft_skewed_ci95": [
+        0.07562197017970002,
+        0.07782008831179893
+      ],
+      "soft_sin_mean": 0.059596144065970934,
+      "soft_sin_sem": 0.00080264841834366,
+      "soft_sin_ci95": [
+        0.05800331436086989,
+        0.06126058615689375
+      ],
+      "soft_net_mean": 0.017112013965760238,
+      "soft_net_sem": 0.000990932427084536,
+      "soft_net_ci95": [
+        0.014361384022806269,
+        0.01981677395092904
+      ],
+      "soft_net_over_det": 0.11853800012448586,
+      "hard_per_real_mean": 0.06324999999999865,
+      "hard_per_real_std": 0.010433979323743039,
+      "hard_ens_mean_staircase": 0.06499999999999861,
+      "soft_ens_mean_staircase": 0.07611049255292562,
+      "survival_hard_ens_old_convention": 0.325
+    },
+    {
+      "Gamma": 0.07,
+      "EJ_over_kBT": 14.285714285714285,
+      "seed_skewed": 20261804700,
+      "seed_sin": 20262304700,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.07025877878575881,
+      "soft_skewed_sem": 0.0005596218079131263,
+      "soft_skewed_ci95": [
+        0.06921617806221309,
+        0.0713301849795211
+      ],
+      "soft_sin_mean": 0.05800318489496288,
+      "soft_sin_sem": 0.0007931859261811888,
+      "soft_sin_ci95": [
+        0.05649519092835523,
+        0.05950266533651932
+      ],
+      "soft_net_mean": 0.012255593890795932,
+      "soft_net_sem": 0.0009707319307532159,
+      "soft_net_ci95": [
+        0.009713512725693763,
+        0.014834994051165867
+      ],
+      "soft_net_over_det": 0.08489670433063339,
+      "hard_per_real_mean": 0.05724999999999878,
+      "hard_per_real_std": 0.010856409867913093,
+      "hard_ens_mean_staircase": 0.05499999999999883,
+      "soft_ens_mean_staircase": 0.06973551387786983,
+      "survival_hard_ens_old_convention": 0.275
+    },
+    {
+      "Gamma": 0.085,
+      "EJ_over_kBT": 11.76470588235294,
+      "seed_skewed": 20261804850,
+      "seed_sin": 20262304850,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.06713588367579537,
+      "soft_skewed_sem": 0.0006279477658412761,
+      "soft_skewed_ci95": [
+        0.06586908797765625,
+        0.06836991964054223
+      ],
+      "soft_sin_mean": 0.05883942307095143,
+      "soft_sin_sem": 0.0007302970143938984,
+      "soft_sin_ci95": [
+        0.05740670224061266,
+        0.060270561544208304
+      ],
+      "soft_net_mean": 0.008296460604843944,
+      "soft_net_sem": 0.0009631469907847358,
+      "soft_net_ci95": [
+        0.005598526433447951,
+        0.010963217399929573
+      ],
+      "soft_net_over_det": 0.057471075595051484,
+      "hard_per_real_mean": 0.05471874999999884,
+      "hard_per_real_std": 0.011563971307035114,
+      "hard_ens_mean_staircase": 0.05499999999999883,
+      "soft_ens_mean_staircase": 0.0669983220273463,
+      "survival_hard_ens_old_convention": 0.275
+    },
+    {
+      "Gamma": 0.1,
+      "EJ_over_kBT": 10.0,
+      "seed_skewed": 20261805000,
+      "seed_sin": 20262305000,
+      "n_real_skewed": 160,
+      "n_real_sin": 80,
+      "soft_skewed_mean": 0.06410286078305107,
+      "soft_skewed_sem": 0.0006593298024191136,
+      "soft_skewed_ci95": [
+        0.06282114323841267,
+        0.0654037827471716
+      ],
+      "soft_sin_mean": 0.06120295163513112,
+      "soft_sin_sem": 0.0009147344895382128,
+      "soft_sin_ci95": [
+        0.0595204145334309,
+        0.06303961081770999
+      ],
+      "soft_net_mean": 0.0028999091479199463,
+      "soft_net_sem": 0.0011275881228129188,
+      "soft_net_ci95": [
+        -0.00021846757929731841,
+        0.005883368213740699
+      ],
+      "soft_net_over_det": 0.020088192519299435,
+      "hard_per_real_mean": 0.05112499999999891,
+      "hard_per_real_std": 0.01127068329280825,
+      "hard_ens_mean_staircase": 0.04499999999999904,
+      "soft_ens_mean_staircase": 0.0633230224728816,
+      "survival_hard_ens_old_convention": 0.225
+    }
+  ],
+  "monotonicity_violations": [],
+  "usable_range_note": "Gamma grid deliberately capped at 0.10: out/survival_curve.json shows the hard estimator saturating at its floor beyond that, so the step carries no temperature information there."
+}

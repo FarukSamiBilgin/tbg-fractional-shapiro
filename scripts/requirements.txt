@@ -1,0 +1,5 @@
+numpy
+scipy
+matplotlib
+pytest
+# photonic (M2) scripts additionally need MEEP / MPB (conda-forge pymeep)

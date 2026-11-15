@@ -1,0 +1,47 @@
+{
+  "description": "Deterministic spp/averaging convergence, skewed CPR, decimated grid (every 4th point in both axes).",
+  "seed_status": "deterministic - no RNG",
+  "grid": {
+    "n_iac": 51,
+    "n_idc": 71,
+    "i_ac_min": 0.0,
+    "i_ac_max": 14.0,
+    "i_dc_min": 0.0,
+    "i_dc_max": 14.0
+  },
+  "variants": {
+    "v1_spp60_300T": {
+      "spp": 60,
+      "n_transient": 150,
+      "n_avg": 300,
+      "v_resolution": 0.016666666666666666,
+      "tol": 0.025
+    },
+    "v2_spp120_300T": {
+      "spp": 120,
+      "n_transient": 150,
+      "n_avg": 300,
+      "v_resolution": 0.016666666666666666,
+      "tol": 0.025
+    },
+    "v3_spp60_1000T": {
+      "spp": 60,
+      "n_transient": 500,
+      "n_avg": 1000,
+      "v_resolution": 0.005,
+      "tol": 0.0125
+    }
+  },
+  "pairs": {
+    "spp_60_vs_120": {
+      "max_abs_dv": 1.5150220605164577e-05,
+      "p99_abs_dv": 2.8486817555517534e-06
+    },
+    "avg_300T_vs_1000T": {
+      "max_abs_dv": 0.008631622437000885,
+      "p99_abs_dv": 0.004831129061957295
+    }
+  },
+  "tolerance_1000T": 0.0125,
+  "tolerance_1000T_derivation": "v_res = Omega / n_avg = 5 / 1000 = 0.005; tol = 2.5 * v_res = 0.0125"
+}

@@ -1,0 +1,40 @@
+{
+ "task": "M2 2D S21 ladder: cavity harminv probe (waveguide CAPPED -> Q_i)",
+ "rng": "deterministic - no RNG",
+ "meep_version": "1.34.0",
+ "capped": true,
+ "params": {
+  "N_rows": 4,
+  "res": 20,
+  "cell": [
+   24.0,
+   15.058330249197702
+  ],
+  "y_wg": -2.1650635094610964,
+  "y_cav": 1.299038105676658,
+  "x_cav": 0.0,
+  "s_star": 0.0,
+  "eps_eff": 7.698245769014287,
+  "a_final_um": 602.886947874021,
+  "until_after_sources": 3000.0,
+  "T_over_tau": 3000.0
+ },
+ "result": {
+  "nu0": 0.26982421243718113,
+  "f0_GHz": 134.17318812375368,
+  "Q_i": 38999.454223615234,
+  "cav_mode_amp": 18.333395116376877,
+  "cav_mode_err": 3.581934343274595e-14,
+  "anchor_nu_iso": 0.26986,
+  "used_mirror_x": false
+ },
+ "all_gap_modes": [
+  {
+   "nu": 0.26982421243718113,
+   "GHz": 134.17318812375368,
+   "Q": 38999.454223615234,
+   "amp": 18.333395116376877,
+   "err": 3.581934343274595e-14
+  }
+ ]
+}

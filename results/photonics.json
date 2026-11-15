@@ -1,0 +1,312 @@
+{
+ "_meta": {
+  "module": "M2 photonic-cavity",
+  "schema_ref": "M2_BRIEF.md Sec. 4.4",
+  "consumed_by": "M4",
+  "generator": "scripts/export_photonics.py",
+  "idempotent": true,
+  "deterministic_note": "no wall-clock in payload; re-run is byte-stable unless an input artifact changed.",
+  "units": {
+   "frequency": "GHz",
+   "length": "um",
+   "Q": "dimensionless",
+   "V_mode_a3": "a^3",
+   "V_mode_um3": "um^3",
+   "nu": "a/lambda (dimensionless)"
+  },
+  "convention": "standing-wave TCMT (brief Sec.2): A ~= 2 Q_i/Q_w, A=1% => Q_w = 200 Q_i, T=99.0%.",
+  "measured_vs_pending": {
+   "measured": [
+    "geometry.N_rows",
+    "geometry.a_um",
+    "geometry.cavity",
+    "ladder.Q_loaded.N2",
+    "ladder.Q_loaded.N3",
+    "ladder.Q_loaded.N4",
+    "ladder.Q_w.N2",
+    "ladder.Q_w.N3",
+    "ladder.Q_w.N4",
+    "ladder.exponential_fit",
+    "modes.Q_i_insitu_24a",
+    "modes.Q_mat",
+    "modes.Q_rad_intrinsic",
+    "modes.Q_rad_smallcell_16a",
+    "modes.V_mode_a3",
+    "modes.V_mode_um3",
+    "modes.f0_GHz",
+    "modes.nu0_a_over_lambda",
+    "tcmt_check.Qw_N3_ringdown",
+    "tcmt_check.Qw_N3_s21fit",
+    "tolerances",
+    "transfer.E_per_sqrtW.N3"
+   ],
+   "pending_run": [
+    "transfer.E_per_sqrtW.N2",
+    "transfer.E_per_sqrtW.N4"
+   ],
+   "n_measured": 22,
+   "n_pending": 2
+  }
+ },
+ "geometry": {
+  "a_um": 586.74,
+  "a_um_precise": 586.735322,
+  "a_provenance": "cavity-line rescale: a = nu0 * lambda0 with nu0=0.283785 (isolated tuned L3 s0.20 rdef1.15, res18 deep lossless ring-down) and lambda0=c/145GHz; places the cavity line at 145.000 GHz (decisions 2026-07-24 AT-2 CLOSED). Note the AT-0 bulk-midgap-centred a was 638.01 um; the device uses the cavity-line a.",
+  "r_over_a": 0.3,
+  "t_over_a": 0.5,
+  "cavity": "L3 s=0.20 rdef=1.15 outer8",
+  "cavity_detail": {
+   "type": "L3 (3 missing holes), standing-wave defect",
+   "end_hole_shift_s": 0.2,
+   "defect_ring_radius_scale_rdef": 1.15,
+   "defect_ring": "8 transverse (j=N+/-1) + 2 end (row N, +/-2) holes scaled by rdef",
+   "outer_mirror_rows": 8,
+   "outer_rows_note": "ladder/S21 cells carry >=8 outer mirror rows on the far side or Q_i is cell-limited (decisions 2026-07-24 ladder lesson).",
+   "mirror_parity_xyz": [
+    -1,
+    1,
+    1
+   ],
+   "parity_note": "Hz pseudovector: MEEP phase (+1,-1,+1) realises parity (-1,+1,+1) (decisions 2026-07-23)."
+  },
+  "N_rows": [
+   2,
+   3,
+   4,
+   5
+  ],
+  "N_rows_note": "side-coupled W1 separation in rows; the coupling knob.",
+  "lattice": "triangular air holes in HR-Si slab; TE-like polarization carries the gap",
+  "eps_core": 11.68,
+  "tan_delta": 2e-05,
+  "chip_scale": ">=15x15 periods (~9x9 mm) to suppress in-plane leakage"
+ },
+ "modes": {
+  "f0_GHz": 145.0,
+  "f0_note": "by construction (a chosen so the cavity line = 145 GHz).",
+  "nu0_a_over_lambda": 0.28379,
+  "nu0_a_over_lambda_precise": 0.283785063521672,
+  "Q_rad_intrinsic": [
+   27000,
+   30000
+  ],
+  "Q_rad_intrinsic_note": "vertical-radiation ceiling band. res12-noavg lateral series Q=9204(16a)->27577(20a)->29961(24a) saturates -> Q_vert~3.0e4; applying the measured res12-noavg->res18+subpixel correction (~-11%) gives intrinsic Q_rad~2.7-3.0e4. Brief target >=5e4 renegotiated to this measured ceiling (decisions 2026-07-24 AT-2 CLOSED); further gain needs multi-hole/heterostructure design (out of scope).",
+  "Q_rad_smallcell_16a": 8576,
+  "Q_rad_smallcell_16a_note": "isolated L3 in a 16a cell (res18 deep lossless, Q=8576.4, reliable); a lateral-leakage artifact of the small cell, NOT the physical ceiling.",
+  "Q_mat": 52075,
+  "Q_mat_note": "loss closure Q_mat = 1/(1/Q_tot - 1/Q_rad) from the 16a res18 pair (lossy Q_tot=7363.7, lossless Q_rad=8576.4) => ~5.21e4, vs theory 1/tan_delta=5.0e4 (closes to ~4%).",
+  "Q_i_insitu_24a": 14611,
+  "Q_i_insitu_24a_note": "in-situ cavity Q_i, N=3 capped ladder run (res18, 24a cell, stationary over 7000p). Sits between the 16a isolated value (8576) and the vertical ceiling (2.7-3.0e4), consistent with the lateral-leakage picture.",
+  "V_mode_a3": 0.3307,
+  "V_mode_um3": 66792789.7,
+  "V_mode_um3_note": "= V_mode_a3 * a^3 at the device a=586.74 um (scale-invariant a^3 value from l3_3d_final res18).",
+  "V_mode_convention": "integral(eps|E|^2 dV) / max(eps|E|^2)",
+  "cavity_line_gap_GHz": [
+   137.5,
+   177.9
+  ],
+  "cavity_line_gap_note": "TE gap edges at the device a=586.74 um; cavity line 145 GHz sits +7.5 GHz above the lower edge and -32.9 GHz below the upper edge (decisions 2026-07-24)."
+ },
+ "transfer": {
+  "E_per_sqrtW": {
+   "N3": {
+    "value": 1.046,
+    "units": "MEEP-normalized E per sqrt(W of waveguide input), steady-state at the cavity centre (junction site)",
+    "at": "cavity line (res18 anchor)",
+    "status": "measured",
+    "source": "out/m2/s21_3d_lad18_s21_N3_s020_rdef115_res18.json",
+    "cmt_check_note": "steady-state per sqrt(W); U_CMT=A*P_in*Q_i/omega0 check in analyze once Q_i (TCMT/harminv) is fixed. E2_boxint is the |E|^2 volume integral over the 2x2x0.5 a cavity box (MEEP units); multiply by eps and 1/2 for stored energy."
+   },
+   "N2": "pending_run",
+   "N4": "pending_run",
+   "N5": "extrapolated",
+   "note": "res18 field-transfer run exists only for N=3 (the ladder anchor). N2/N4 would each need a dedicated S21 field run (separate from the pending N2/N4 ring-down Q runs); N5 is extrapolated with the ladder."
+  },
+  "S21_curves": {
+   "anchor_res18_N3": {
+    "spectrum_json": "out/m2/s21_3d_lad18_s21_N3_s020_rdef115_res18.json",
+    "normalization_npz": "out/m2/s21_3d_lad18_s21_N3_s020_rdef115_res18_norm.npz",
+    "note": "300-pt S21(f) + steady-state |E| field transfer; the res18 subpixel anchor curve."
+   },
+   "coarse_res12_ladder": {
+    "N2": "out/m2/s21_3d_lad_s21_N2_s020_rdef115_res12.json",
+    "N3": "out/m2/s21_3d_lad_s21_N3_s020_rdef115_res12.json",
+    "N4": "out/m2/s21_3d_lad_s21_N4_s020_rdef115_res12.json",
+    "N5": "out/m2/s21_3d_lad_s21_N5_s020_rdef115_res12.json",
+    "norm_npz_suffix": "_norm.npz (per N)",
+    "note": "res12-noavg coarse ladder S21 curves; dispersion knobs invisible at res12-noavg staircasing (decisions 2026-07-24) -- use for trend only, not cavity-line numbers."
+   }
+  }
+ },
+ "tcmt_check": {
+  "Qw_N3_ringdown": 15192.0,
+  "Qw_N3_ringdown_note": "1/Q_w = 1/Q_loaded(7448) - 1/Q_i(14611); matches decisions 2026-07-25 (1.52e4).",
+  "Qw_N3_s21fit": [
+   13895.0,
+   14261.0
+  ],
+  "Qw_N3_s21fit_note": "two independent TCMT fits (band-power & flux) of the res18 S21 dip.",
+  "s21_fit_R2": [
+   0.447,
+   0.432
+  ],
+  "agreement_pct": 7.3,
+  "pass_vs_10pct_brief": true,
+  "consistency_note": "brief AT-3 requires TCMT dip predicted from fitted Q's within 10%: PASS on {nu0, Q_w} (~8%). Only the dip DEPTH deviates.",
+  "dip_depth_note": "Fano / band-tail dilution: measured on-resonance dip ~5.8% (fit dip_depth=0.0593) vs the naive lossless two-port prediction ~81%. The cavity line sits in the W1 band tail, so the clean single-mode notch does not form (decisions 2026-07-24/25).",
+  "offres_99p5_note": "off-resonance transmission does NOT reach the brief's >=99.5% across +/-5 GHz: measured min T beyond 5 GHz = 0.9856. This is a band-tail artifact (cavity line inside the guided-band tail), not a loss.",
+  "fit_Q_i_caveat": "the S21-fit Q_i (~4.3e2) is NOT physical -- band-tail dilution corrupts the depth-derived Q_i; the ring-down Q_i (14611) is authoritative."
+ },
+ "ladder": {
+  "Q_loaded": {
+   "N2": {
+    "value": 13783.8,
+    "nu0_a_over_lambda": 0.283464,
+    "f0_GHz_cavity_line": 144.836,
+    "status": "measured",
+    "basis": "status=done result.headline_in_gap",
+    "source": "out/m2/s21_3d_l18_harminv_N2_s020_rdef115_res18.json"
+   },
+   "N3": {
+    "value": 7448.1,
+    "nu0_a_over_lambda": 0.283917,
+    "f0_GHz_cavity_line": 145.067,
+    "status": "measured",
+    "basis": "status=done result.headline_in_gap",
+    "source": "out/m2/s21_3d_l18_harminv_N3_s020_rdef115_res18.json"
+   },
+   "N4": {
+    "value": 11898.3,
+    "nu0_a_over_lambda": 0.283808,
+    "f0_GHz_cavity_line": 145.012,
+    "status": "measured",
+    "basis": "status=done result.headline_in_gap",
+    "source": "out/m2/s21_3d_l18_harminv_N4_s020_rdef115_res18.json"
+   }
+  },
+  "Q_w": {
+   "N2": {
+    "value": 243294.4,
+    "status": "measured",
+    "derivation": "1/Q_w = 1/Q_loaded - 1/Q_i_anchor",
+    "Q_i_anchor": 14611.7,
+    "fit_excluded": true,
+    "note": "near-critical: Q_loaded within 20% of Q_i (poor guided-band overlap); excluded from the exponential fit. Matches the N=2 anomaly of the 2D ladder (decisions 2026-07-23)."
+   },
+   "N3": {
+    "value": 15191.9,
+    "status": "measured",
+    "derivation": "1/Q_w = 1/Q_loaded - 1/Q_i_anchor",
+    "Q_i_anchor": 14611.7
+   },
+   "N4": {
+    "value": 64072.3,
+    "status": "measured",
+    "derivation": "1/Q_w = 1/Q_loaded - 1/Q_i_anchor",
+    "Q_i_anchor": 14611.7
+   }
+  },
+  "Q_i_anchor": {
+   "value": 14611.7,
+   "note": "in-situ Q_i (N=3 cap, res18, 24a cell) taken as the N-independent intrinsic anchor within the fixed 24a ladder cell; a per-N cap run would refine each Q_w.",
+   "source": "out/m2/s21_3d_l18_harminv_N3_s020_rdef115_res18_cap.json"
+  },
+  "exponential_fit": {
+   "ok": true,
+   "status": "measured",
+   "model": "ln Q_w = sigma*N + b",
+   "sigma": 1.43925,
+   "b": 5.31077,
+   "R2": 1.0,
+   "n_points": 2,
+   "usable_N": [
+    3,
+    4
+   ],
+   "trivial_r2_warning": true,
+   "Qw_A1pct_target": 2922330.2,
+   "Qw_A1pct_target_note": "Q_w = 200*Q_i_insitu (A=1%, standing-wave TCMT, brief Sec.2)",
+   "N_star_for_A1pct": 6.654,
+   "N_star_note": "rows of separation needed for A=1%; outside [2,5] => extrapolated, informs M4's Q_w pick once Q_J is known."
+  },
+  "N5": {
+   "status": "extrapolated",
+   "note": "N=5 not simulated at res18; extrapolated via the exponential coupling law (justified, decisions 2026-07-25). Value fills in once the fit has >=2 non-anomalous ladder points.",
+   "Q_w_extrapolated": 270227.6
+  },
+  "anomalies": [
+   "N2 near-critical (Q_loaded=13784 ~ Q_i=14612)"
+  ],
+  "method_note": "Q via harminv ring-down (brief Sec.5 primary method): Q_loaded from the open-waveguide run, Q_i from the capped (waveguide row filled) run; convention-independent. The clean single-mode S21 dip is diluted by band-tail/Fano coupling (see tcmt_check)."
+ },
+ "tolerances": {
+  "worst_case_min_margin_GHz": 10.9,
+  "worst_case_gap_shrinks_to_GHz": 24.8,
+  "f0_stays_in_gap_worst_case": true,
+  "box": "|dr/a|<=2%, |dt/a|<=5%, |da|<=2% (linear superposition, over-conservative: both edges pushed toward 145 GHz at once)",
+  "sensitivities_GHz_per_pct": {
+   "d_fmid_d_rOa": 0.87,
+   "d_fmid_d_tOa": -0.304,
+   "d_fmid_d_a": -1.45
+  },
+  "a_analytic_note": "nu=a/lambda depends only on r/a,t/a,eps (Maxwell scale invariance); f=nu*c/a scales as 1/a, so +2% in a => -1.961% in every frequency, -2% in a => +2.041%. No simulation needed for a.",
+  "basis_note": "computed on the BULK gap at the AT-0 midgap-centred a=638.01 um (bulk-gap level, brief item 3). Baseline bulk gap [126.4, 163.6] GHz. At the device cavity-line a=586.74 um the gap is [137.5, 177.9] GHz with cavity margins +7.5 / +32.9 GHz (see modes.cavity_line_gap_GHz).",
+  "source": "out/m2/tolerance.json (+ tolerance_ck.json cross-check)"
+ },
+ "provenance": {
+  "chain_of_evidence": {
+   "AT0_slab_dispersion": [
+    "out/m2/at0_slab3d.json",
+    "out/m2/at0_midgap.json",
+    "out/m2/at0_neff.json"
+   ],
+   "AT1_bands": [
+    "out/m2/at1_mpb.json",
+    "out/m2/pwe_convergence.json"
+   ],
+   "cavity_tuning": [
+    "out/m2/tune_summary.json",
+    "out/m2/TUNING_MEMO.md"
+   ],
+   "AT2_isolated_cavity": [
+    "out/m2/l3_3d_deep_s020_rdef115_res18_lossless.json (Q_rad 16a=8576)",
+    "out/m2/l3_3d_final_s020_rdef115_res18.json (Q_tot lossy + V_mode)",
+    "out/m2/l3_3d_final_s020_rdef115_res18_Efield.npz (|E|^2 map)",
+    "out/m2/l3_3d_latref_s020_rdef115_res12_lossless.json (16a lat)",
+    "out/m2/l3_3d_big20_s020_rdef115_res12_lossless.json (20a lat)",
+    "out/m2/l3_3d_lat24_s020_rdef115_res12_lossless.json (24a lat)"
+   ],
+   "AT3_AT4_ladder": [
+    "out/m2/s21_3d_lad18_s21_N3_s020_rdef115_res18.json (S21 + field transfer, anchor)",
+    "out/m2/s21_3d_l18_harminv_N3_s020_rdef115_res18.json (Q_loaded, done)",
+    "out/m2/s21_3d_l18_harminv_N3_s020_rdef115_res18_cap.json (Q_i, trimmed-stationary)",
+    "out/m2/s21_3d_l18_harminv_N2_s020_rdef115_res18.json (Q_loaded, pending_run)",
+    "out/m2/s21_3d_l18_harminv_N4_s020_rdef115_res18.json (Q_loaded, pending_run)",
+    "out/m2/s21_3d_lad_s21_N[2-5]_s020_rdef115_res12.json (coarse res12 ladder)"
+   ],
+   "tolerances": [
+    "out/m2/tolerance.json",
+    "out/m2/tolerance_ck.json"
+   ]
+  },
+  "stability_map": "subpixel eps-averaging passivity violation at res 12-15 (NaN blow-up); only res 8 and res 18 verified stable. L3 scans: res12-noavg; all cavity-line/ladder physics: res18+subpixel (decisions 2026-07-23/24).",
+  "pwe_bias_note": "the locked PWE gap table (N=5, 121 plane waves) carries 2-6% plane-wave truncation bias (largest on the upper edge); converged MPB is the truth. PWE edges drift monotonically toward MPB with N (decisions 2026-07-23 AT-1).",
+  "numerics": {
+   "meep_version": "1.34.0",
+   "python": "3.13.14",
+   "numpy": "2.5.1",
+   "scipy": "1.18.0",
+   "Q_method": "harminv ring-down (primary), S21 TCMT fit (cross-check)"
+  },
+  "pending_runs": {
+   "N2_insitu_ringdown": "out/m2/s21_3d_l18_harminv_N2_s020_rdef115_res18.json",
+   "N4_insitu_ringdown": "out/m2/s21_3d_l18_harminv_N4_s020_rdef115_res18.json",
+   "auto_fill": "re-run scripts/export_photonics.py after these report status=done; ladder Q_loaded/Q_w and the exponential fit fill in idempotently."
+  },
+  "renegotiations_vs_brief": [
+   "AT-2 Q_rad target 5e4 -> measured vertical ceiling 2.7-3.0e4 (decisions 2026-07-24).",
+   "AT-0 'gap centred at 145 GHz' -> 'cavity line at 145 GHz, in-gap with quoted margins' (decisions 2026-07-23).",
+   "AT-3 clean single-mode dip / off-res >=99.5% not met: cavity line in W1 band tail; Q consistency still PASSES via ring-down (decisions 2026-07-24/25)."
+  ]
+ }
+}

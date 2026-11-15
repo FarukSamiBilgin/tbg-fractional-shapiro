@@ -1,0 +1,71 @@
+{
+  "description": "F1: RCSJ capacitive mimic of the half-integer step with a purely sinusoidal CPR, floor-free estimator, production geometry (nu=-2.4, alpha=0.70).",
+  "protocol_note": "Independent initial conditions (phi=0, v=i_dc) per bias point; in the underdamped regime the staircase is protocol-dependent and this protocol is stated.",
+  "cross_integrator_backtest": {
+    "beta_c": 0.005,
+    "max_dev_sine": 0.0005973597013406717,
+    "max_dev_skewed": 0.010117694077334427,
+    "v_resolution": 0.016666666666666666
+  },
+  "rsj_reference": {
+    "w_soft_sine_floor": 0.0587029929168943,
+    "w_soft_skewed": 0.19286044696435736
+  },
+  "net_signal_reference": 0.1342,
+  "sweep": [
+    {
+      "beta_c": 0.005,
+      "w_soft_sine": 0.058714723677722035,
+      "fake_halfstep_net": 1.1730760827735609e-05
+    },
+    {
+      "beta_c": 0.02,
+      "w_soft_sine": 0.05984328689815429,
+      "fake_halfstep_net": 0.0011402939812599905
+    },
+    {
+      "beta_c": 0.04,
+      "w_soft_sine": 0.06285519588108038,
+      "fake_halfstep_net": 0.004152202964186079,
+      "w_soft_skewed_at_contract": 0.1744101127945296,
+      "max_dev_skewed_vs_rsj": 0.044703512495025244
+    },
+    {
+      "beta_c": 0.1,
+      "w_soft_sine": 0.07587378829963834,
+      "fake_halfstep_net": 0.01717079538274404
+    },
+    {
+      "beta_c": 0.16,
+      "w_soft_sine": 0.0871863376918947,
+      "fake_halfstep_net": 0.028483344775000398
+    },
+    {
+      "beta_c": 0.25,
+      "w_soft_sine": 0.09247355145193936,
+      "fake_halfstep_net": 0.03377055853504506
+    },
+    {
+      "beta_c": 0.35,
+      "w_soft_sine": 0.0880637091054389,
+      "fake_halfstep_net": 0.0293607161885446
+    },
+    {
+      "beta_c": 0.5,
+      "w_soft_sine": 0.07794315650075966,
+      "fake_halfstep_net": 0.019240163583865356
+    },
+    {
+      "beta_c": 1.0,
+      "w_soft_sine": 0.06453256669929562,
+      "fake_halfstep_net": 0.005829573782401322
+    },
+    {
+      "beta_c": 2.0,
+      "w_soft_sine": 0.06246138190292355,
+      "fake_halfstep_net": 0.0037583889860292527
+    }
+  ],
+  "fake_at_contract_beta": 0.004152202964186079,
+  "fake_over_signal_at_contract": 0.030940409569195814
+}

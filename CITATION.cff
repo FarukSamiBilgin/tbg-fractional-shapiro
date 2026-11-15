@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this work, please cite it as below."
+title: "Fractional Shapiro steps as a current-phase fingerprint of a magic-angle twisted-bilayer-graphene Josephson junction in a sub-terahertz photonic-crystal cavity"
+authors:
+  - family-names: Bilgin
+    given-names: Faruk Sami
+    affiliation: Independent Researcher
+    orcid: "https://orcid.org/0009-0001-9064-4410"
+type: software
+license: MIT
+date-released: 2026-11-15
+repository-code: "https://github.com/FarukSamiBilgin/tbg-fractional-shapiro"

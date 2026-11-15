@@ -1,0 +1,113 @@
+{
+ "task": "M2 AT-0 step 1: slab n_eff and self-consistent lattice constant",
+ "rng": "deterministic - no RNG",
+ "versions": {
+  "python": "3.13.3",
+  "scipy": "1.18.0",
+  "meep_mpb_grid": "1.34.0"
+ },
+ "constants": {
+  "f0_GHz": 145.0,
+  "lambda0_um": 2067.534193103448,
+  "c_um_GHz": 299792.458,
+  "eps_core": 11.68,
+  "eps_clad": 1.0,
+  "r_over_a": 0.3,
+  "t_over_a": 0.5
+ },
+ "slab_model": {
+  "equation": "tan(kappa*t/2)=gamma/kappa (even TE0, symmetric slab)",
+  "single_moded_V_lt_pi_over_2": true,
+  "V": 1.4968858548529482,
+  "kappa_over_k0": 1.995433344160038
+ },
+ "midgap_interpolation": {
+  "method": "monotone PCHIP over MPB 2D TE midgap grid",
+  "source": "out/m2/at0_midgap.json",
+  "eps_grid": [
+   7.0,
+   7.5,
+   7.6983,
+   8.0,
+   8.12,
+   8.5
+  ],
+  "midgap_grid": [
+   0.30341336094464066,
+   0.294836367387747,
+   0.2916348066338632,
+   0.28696153835961874,
+   0.2851653355874626,
+   0.27969581760649287
+  ],
+  "mpb_resolution": 32,
+  "meep_version": "1.34.0"
+ },
+ "loop": {
+  "tol_um": 0.5,
+  "a_start_um": 608.0,
+  "n_iter": 3,
+  "history": [
+   {
+    "iter": 0,
+    "a_um": 608.0,
+    "a_over_lambda": 0.29407010632669084,
+    "n_eff": 2.7811241502496875,
+    "eps_eff": 7.734651539102046,
+    "nu_mid": 0.29106090622657077,
+    "a_new_um": 601.7783758991114,
+    "delta_um": 6.221624100888562
+   },
+   {
+    "iter": 1,
+    "a_um": 601.7783758991114,
+    "a_over_lambda": 0.29106090622657077,
+    "n_eff": 2.77313759619761,
+    "eps_eff": 7.6902921274446605,
+    "nu_mid": 0.2917616653484886,
+    "a_new_um": 603.2272193448056,
+    "delta_um": 1.4488434456941377
+   },
+   {
+    "iter": 2,
+    "a_um": 603.2272193448056,
+    "a_over_lambda": 0.2917616653484886,
+    "n_eff": 2.7750104085739875,
+    "eps_eff": 7.700682767693969,
+    "nu_mid": 0.29159708694784126,
+    "a_new_um": 602.886947874021,
+    "delta_um": 0.3402714707846144
+   }
+  ]
+ },
+ "result": {
+  "a_final_um": 602.886947874021,
+  "n_eff": 2.7745712766145125,
+  "eps_eff": 7.698245769014287,
+  "midgap_a_over_lambda": 0.2916356652886985,
+  "gap_edges_a_over_lambda": [
+   0.2576086910560098,
+   0.32566092221171666
+  ],
+  "gap_edges_GHz": [
+   128.09887984170055,
+   161.93863325234602
+  ],
+  "midgap_GHz": 145.01918352300038,
+  "gap_edges_source": "MPB exact at eps=7.6983 (|d_eps|=5.42e-05 from converged eps_eff; PCHIP adjustment to eps_eff would be <=1.7e-06 in a/lambda, negligible)",
+  "gap_edges_a_over_lambda_pchip": [
+   0.25760957571990717,
+   0.32566175484132515
+  ],
+  "gap_width_GHz": 33.83975341064547,
+  "f0_in_gap": true
+ },
+ "comparison_v02": {
+  "a_guess_v02_um": 608.0,
+  "v02_eps_eff_assumption": 8.12,
+  "v02_midgap_a_over_lambda_PWE": 0.2940705285685447,
+  "deviation_um": -5.1130521259790385,
+  "deviation_frac": -0.008409625207202365,
+  "within_10pct": true
+ }
+}

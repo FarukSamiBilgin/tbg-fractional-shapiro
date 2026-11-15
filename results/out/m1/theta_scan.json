@@ -1,0 +1,68 @@
+{
+  "description": "M1 fine theta scan for the twist-disorder appendix (production item 3)",
+  "params": {
+    "hbar_vF_meV_nm": 620.0,
+    "N_shells": 3,
+    "BZ_grid": 7,
+    "theta_min_deg": 0.9,
+    "theta_max_deg": 1.2,
+    "theta_step_deg": 0.005,
+    "n_points": 61,
+    "theta_design_deg": 1.025,
+    "disorder_halfwidth_deg": 0.05
+  },
+  "magic_angle": {
+    "theta_magic_fine_deg": 1.0357998330360108,
+    "theta_grid_min_deg": 1.035,
+    "W_min_fine_meV": 0.7579054552742932,
+    "W_min_parabola_vertex_meV": 0.7989376457153412,
+    "note": "theta_magic_fine is the parabola vertex over +-0.01 deg; W_min_fine is the direct fine-grid minimum. The dip is V-shaped, so the parabola vertex slightly overshoots the true tip. Fine minimum (1.035) lies within the locked 1.025 +- 0.0125 deg band."
+  },
+  "curvature": {
+    "d2W_dtheta2_meV_per_deg2": 16917.946315109697,
+    "fit_half_width_deg": 0.01,
+    "fit_rms_meV": 0.060948197435801,
+    "window_dependence": {
+      "0.010": 16917.946315109697,
+      "0.015": 14552.727293247994,
+      "0.020": 12169.853979983787,
+      "0.025": 10298.538164091775,
+      "0.030": 8861.907450798712
+    },
+    "note": "effective curvature: the dip is nearly linear in |dtheta| so d2W/dtheta2 depends on the fit window (range 8862-16918 over +-0.010 to +-0.030 deg). The near-linear slopes below are the more robust local twist-sensitivity.",
+    "linear_slope_low_side_meV_per_deg": -103.87748796742798,
+    "linear_slope_high_side_meV_per_deg": 166.7176663097762
+  },
+  "disorder_window": {
+    "primary_center_deg": 1.025,
+    "theta_minus_deg": 0.975,
+    "W_minus_meV": 7.4084750094117044,
+    "theta_plus_deg": 1.075,
+    "W_plus_meV": 7.137737202214705,
+    "broadening_vs_W_min_fine": [
+      9.77,
+      9.42
+    ],
+    "secondary_center_deg": 1.035,
+    "secondary_theta_minus_deg": 0.985,
+    "secondary_W_minus_meV": 6.668101922893989,
+    "secondary_theta_plus_deg": 1.085,
+    "secondary_W_plus_meV": 9.184907247865931,
+    "note": "primary window centered on the locked design angle 1.025 deg to match material.json / AT-2 (7.408 / 7.138 meV); secondary window centered on the fine minimum 1.035 deg for the appendix sensitivity discussion."
+  },
+  "coarse_check": {
+    "n_points": 13,
+    "step_deg": 0.025,
+    "max_deviation_from_fine_meV": 0.0,
+    "note": "coarse points recomputed independently; they coincide with the fine-grid values to machine precision (deterministic)."
+  },
+  "shoulder_artifact": {
+    "theta_range_deg": [
+      0.925,
+      0.95
+    ],
+    "note": "small local min-max-min wiggle ~0.05 meV amplitude; a 7x7 k-grid discretization feature far from the magic angle, not physical."
+  },
+  "runtime_s": 10.63,
+  "runtime_fine_scan_s": 0.0
+}

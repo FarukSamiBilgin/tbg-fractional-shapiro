@@ -1,0 +1,36 @@
+{
+ "task": "M2 cavity-tuning pre-screen: 2D eff-index run",
+ "rng": "deterministic - no RNG",
+ "meep_version": "1.34.0",
+ "params": {
+  "knob": "rdef",
+  "value": 1.0,
+  "rdef_radius_scale": 1.0,
+  "end_hole_shift_s": 0.0,
+  "mirror_phase_X": 1,
+  "mirror_phase_Y": -1,
+  "r_over_a": 0.3,
+  "eps_eff": 7.698245769014287,
+  "res": 20,
+  "cell": [
+   18.0,
+   10.392304845413264
+  ],
+  "dpml": 1.0,
+  "fcen": 0.29,
+  "df": 0.08,
+  "until_after_sources": 600.0,
+  "a_final_um_2d_ghzmap": 602.886947874021,
+  "defect_ring": "8 transverse (j=+/-1, x=+/-0.5,+/-1.5) + 2 axial end holes (+/-2,0)"
+ },
+ "result": {
+  "nu0": 0.269817783389218,
+  "f0_GHz_2dmap": 134.16999120582696,
+  "Q_2d": 12663.974644981141,
+  "in_gap": true,
+  "nu_base_ref": 0.2698183194491378,
+  "dnu_from_base": -5.360599197867799e-07,
+  "n_harminv_modes": 3,
+  "n_in_gap": 2
+ }
+}

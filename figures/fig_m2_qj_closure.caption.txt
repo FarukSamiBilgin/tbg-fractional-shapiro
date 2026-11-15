@@ -1,0 +1,11 @@
+Figure 2d -- Collection-structure finding: junction-loading Q_J closure (out/qj_closure.json, photonics.json:modes).
+
+Q_J(d_eff) = Rn eps0 eps_c omega0 V_mode / d_eff^2 (deterministic closed form; coefficient = 1.2587e-06 m^2), plotted on log-log axes for the effective junction gap d_eff. The junction is a lumped ohmic loss channel loading the cavity in parallel with its radiative (Q_rad) and material (Q_mat) intrinsic losses: 1/Q_i = 1/Q_rad + 1/Q_mat + 1/Q_J.
+
+Bare-vdW-stack point (star): d_eff = 100 nm gives Q_J = 1.2587e+08, i.e. only 0.0141% of the intrinsic cavity dissipation reaches the junction -- the junction is a negligible loss channel at the bare stack thickness. At the v0.3 reference drive P_in = 90 nW this puts only V_ac = 1.038 uV across the junction, far short of the V_ac = 600 uV the drive design requires (that voltage would need d_eff = 57.8 um at the measured, band-tail-diluted field level).
+
+Loading-criterion band (green, Q_J <= 2700-3000): requires Q_rad, Q_mat >= 10 Q_J (>=~90% of the intrinsic loss reaching the junction), using the measured Q_rad_intrinsic band [27000, 30000] and Q_mat = 52075. The strict-90% line (red dashed, Q_J <= 1975.66) is the tighter, single-number version of the same criterion (Q_i_EM_rad_mat_only = 17780.9).
+
+Resulting d_eff window (grey band): 20.48-25.24 um (21.59 um at the Q_rad low-end of the intrinsic-ceiling band). Meeting the loading criterion needs engineered antenna/electrode coupling (an effective gap roughly 200-250x the bare 100 nm vdW stack thickness), not the bare stack -- the sharpest device-design conclusion of the collection-structure analysis (S5.3).
+
+Reference lines: in-situ cavity Q_i = 14611 (photonics.json:modes.Q_i_insitu_24a, N=3 capped ladder run) and Q_mat = 52075 (loss closure from the 16a res18 lossy/lossless pair) are shown for scale, not as loading limits themselves.

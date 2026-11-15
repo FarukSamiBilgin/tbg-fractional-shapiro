@@ -1,0 +1,118 @@
+{
+  "inputs": {
+    "a_um": 586.735322,
+    "a_m": 0.0005867353219999999,
+    "eps_core": 11.68,
+    "V_mode_a3": 0.3307,
+    "V_mode_m3": 6.679760582796802e-11,
+    "f0_GHz": 145.0,
+    "omega0_rad_s": 911061869541.04,
+    "Rn_Ohm": 200.0,
+    "A_design": 0.0099,
+    "Q_i_insitu": 14611.0,
+    "Q_rad_intrinsic": [
+      27000.0,
+      30000.0
+    ],
+    "Q_mat": 52075.0,
+    "E_per_sqrtW_N3_meep": 1.046,
+    "d_eff_m": 1e-07,
+    "d_eff_nm": 100.0,
+    "P_in_ref_W": 1.0
+  },
+  "unit_conversion": {
+    "conv_factor_Vm_per_sqrtW": 33080.57499241026,
+    "conv_factor_via_Z0_over_a2": 33080.574987907836,
+    "Z0_Ohm": 376.7303135643202,
+    "E_center_SI_per_sqrtW_Vm": 34602.28144206113,
+    "energy_per_power_unit_a_over_c_s": 1.957138368037264e-12,
+    "note": "E_SI/sqrt(P_SI) = E_meep/sqrt(F_meep) * sqrt(1/(eps0 c a^2)) = *sqrt(Z0/a^2); U_SI/P_SI = (U/F)_meep * a/c."
+  },
+  "stored_energy_per_ref": {
+    "P_in_ref_W": 1.0,
+    "U_cmt_J": 1.5876956860555354e-10,
+    "U_field_center_J": 4.135537298465732e-12,
+    "U_field_boxint_J": 6.872612436669794e-12,
+    "dilution_cmt_over_field_center": 38.3915213784812,
+    "dilution_cmt_over_field_boxint": 23.10177826388348,
+    "note": "U_cmt = A P_in Q_i/omega0 (clean design point). Field routes are the measured, band-tail-diluted N=3 build-up; U_field << U_cmt is the documented Fano dilution and does NOT enter Q_J."
+  },
+  "q_j": {
+    "formula": "Q_J = Rn eps0 eps_c omega0 V_mode / d_eff^2",
+    "Q_J_at_d_eff": 125872348.60516421,
+    "Q_J_via_omega0_U_over_PJ_clean": 125872348.6051642,
+    "equivalence_rel_err": 1.1838311876256117e-16,
+    "coefficient_Rn_eps0_eps_c_omega0_Vmode": 1.2587234860516419e-06
+  },
+  "requirement": {
+    "criterion": "Q_rad, Q_mat >= 10 Q_J  (>= ~90% of intrinsic loss to junction)",
+    "Q_J_max_allowed_10x": 2700.0,
+    "Q_J_max_allowed_10x_radhi": 3000.0,
+    "Q_J_max_for_90pct": 1975.6560227631994,
+    "Q_i_EM_rad_mat_only": 17780.904204868795,
+    "d_eff_min_10x_m": 2.159152342292758e-05,
+    "d_eff_min_10x_um": 21.59152342292758,
+    "d_eff_min_10x_radhi_um": 20.483517650797854,
+    "d_eff_min_90pct_um": 25.2411711395548,
+    "default_100nm_in_range": false,
+    "default_100nm_Q_J": 125872348.60516421,
+    "default_100nm_fraction_to_junction": 0.00014124144819110298,
+    "default_100nm_Q_i_total": 17778.392804208754,
+    "verdict": "The default d_eff = 100 nm (bare vdW stack) is NOT in range: Q_J = 1.26e+08 >> 2700, so the junction is a negligible loss channel (only 0.0141% of the intrinsic dissipation reaches it). Meeting Q_rad,Q_mat >= 10 Q_J needs d_eff >= ~21.6 um -- i.e. engineered antenna/electrode coupling, not the bare stack."
+  },
+  "absolute_voltage_thread": {
+    "P_in_v03_W": 9e-08,
+    "E_center_v03_measured_Vm": 10.380684432618338,
+    "V_ac_v03_default_100nm_uV": 1.038068443261834,
+    "V_ac_required_mV": 0.6,
+    "d_eff_for_0p6mV_measured_um": 57.79965703558729,
+    "d_eff_for_0p6mV_clean_um": 9.328409447766257,
+    "note": "At the v0.3 reference P_in = 90 nW the measured (diluted) cavity field puts only ~1.04 uV across a 100 nm junction vs the 0.6 mV the drive design requires -- consistent with the Q_J closure: the bare stack is far too short."
+  },
+  "cmt_cross_check": {
+    "U_cmt_J": 1.5876956860555354e-10,
+    "U_field_boxint_J": 6.872612436669794e-12,
+    "U_field_less_than_cmt": true,
+    "dilution_factor": 23.10177826388348,
+    "dilution_justification": "band-tail/Fano: measured on-resonance absorbed fraction ~5.8% (TCMT fit R^2~0.45) vs a clean on-band resonance; the field build-up and hence the stored energy are diluted by ~1-2x10^1.",
+    "A_onres_fit_band": 0.058373503800377015,
+    "A_onres_fit_flux": 0.057255943532923056,
+    "two_fit_A_rel_err": 0.019518676987854436,
+    "two_fit_Qw_rel_err": 0.02563406251056274,
+    "tight_20pct_check": "independent band-power vs flux S21 TCMT fits (brief AT-3 consistency)"
+  },
+  "provenance": {
+    "photonics_json": "photonics.json",
+    "s21_json": "s21_3d_lad18_s21_N3_s020_rdef115_res18.json",
+    "ladder_pending_run": [
+      "transfer.E_per_sqrtW.N2",
+      "transfer.E_per_sqrtW.N4"
+    ],
+    "auto_fill_note": "Q_J closure is N_rows-independent (uses V_mode, not per-N Q_w); it re-reads photonics.json every run, so the pending N2/N4 in-situ ring-downs auto-propagate idempotently when photonics.json fills them in.",
+    "generator": "integration/qj_loading.py"
+  },
+  "_meta": {
+    "module": "M4 junction-loading closure (Q_J)",
+    "task": "last pending_M2 item; 1/Q_i = 1/Q_rad + 1/Q_mat + 1/Q_J",
+    "deterministic": true,
+    "idempotent": true,
+    "generator": "integration/qj_loading.py"
+  },
+  "integration_json_update": {
+    "note": "delivered here (out/qj_closure.json) so integration.json is updated WITHOUT editing run_integration.py (unowned); main() also merges this block into integration.json under the namespaced key 'qj_closure'.",
+    "qj_closure": {
+      "resolves_pending_M2": "Q_J (M4_REPORT.md open item #2)",
+      "d_eff_default_nm": 100.0,
+      "Q_J_default_100nm": 125872348.60516421,
+      "Q_J_formula": "Q_J = Rn eps0 eps_c omega0 V_mode / d_eff^2",
+      "d_eff_min_um_for_10x": 21.59152342292758,
+      "d_eff_min_um_for_90pct": 25.2411711395548,
+      "default_100nm_in_range": false,
+      "fraction_to_junction_100nm": 0.00014124144819110298,
+      "Q_i_total_100nm": 17778.392804208754,
+      "U_cmt_J_per_W": 1.5876956860555354e-10,
+      "dilution_cmt_over_field": 23.10177826388348,
+      "source": "out/qj_closure.json (integration/qj_loading.py)"
+    }
+  }
+}

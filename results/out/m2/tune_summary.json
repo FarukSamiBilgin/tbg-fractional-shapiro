@@ -1,0 +1,149 @@
+{
+ "task": "M2 cavity-tuning pre-screen: consolidated slopes + routes",
+ "rng": "deterministic - no RNG",
+ "constants": {
+  "c_um_GHz": 299792.458,
+  "f0_GHz": 145.0,
+  "lambda0_um": 2067.534193103448,
+  "gap3d": [
+   0.2690400358284745,
+   0.34813300261716335
+  ],
+  "gap3d_width": 0.07909296678868882,
+  "gap3d_mid": 0.30858651922281893,
+  "nu_mode_3d": 0.2795,
+  "a_midgap_um": 638.0131800239526,
+  "dnu_target_mode_to_midgap": 0.029086519222818907,
+  "nu_base_2d": 0.269817783389218,
+  "Q_note": "Q_2d is short-window harminv (T=600); baseline reads 12664 vs 14035 full-ringdown (~10% low). Use for RELATIVE collapse detection and in-plane trend only. It is NOT the out-of-plane radiation Q that governs the real 3D cavity (that is an AT-2/AT-3 question, out of scope)."
+ },
+ "scan_rdef": {
+  "knob": "r_def/r (radius scale of 10 defect-adjacent holes)",
+  "points": [
+   {
+    "rdef": 1.0,
+    "nu0": 0.269817783389218,
+    "dnu": 0.0,
+    "Q_2d": 12663.974644981141
+   },
+   {
+    "rdef": 1.15,
+    "nu0": 0.27774333485919683,
+    "dnu": 0.007925551469978809,
+    "Q_2d": 21601.863592568963
+   },
+   {
+    "rdef": 1.3,
+    "nu0": 0.28781441061943175,
+    "dnu": 0.017996627230213724,
+    "Q_2d": 26829.761905008396
+   }
+  ],
+  "dnu_dknob_local_baseline": 0.05283700979985876,
+  "dnu_dknob_full_range": 0.05998875743404574,
+  "dnu_dknob_upper_seg": 0.06714050506823271,
+  "quadratic_b_c": [
+   0.045685262165671786,
+   0.04767831756124652
+  ],
+  "rdef_for_dnu_0p029_linear": 1.4848661727124104,
+  "rdef_for_dnu_0p029_quadratic": 1.4371943450655396,
+  "Q_collapses": false,
+  "Q_trend": "rises (12664 -> 21602 -> 26830): mode moves deeper into 2D gap"
+ },
+ "scan_shift": {
+  "knob": "s (end-hole shift; s<0 = inward). slope per unit INWARD |s|",
+  "points": [
+   {
+    "s": 0.0,
+    "nu0": 0.269817783389218,
+    "dnu": 0.0,
+    "Q_2d": 12663.974644981141
+   },
+   {
+    "s": -0.1,
+    "nu0": 0.2724103289914642,
+    "dnu": 0.002592545602246199,
+    "Q_2d": 22037.56892473772
+   },
+   {
+    "s": -0.2,
+    "nu0": 0.27569289635441674,
+    "dnu": 0.005875112965198714,
+    "Q_2d": 31132.0536247067
+   }
+  ],
+  "dnu_dInwardShift_local_baseline": 0.02592545602246199,
+  "dnu_dInwardShift_full_range": 0.029375564825993572,
+  "dnu_dInwardShift_upper_seg": 0.032825673629525154,
+  "quadratic_b_c": [
+   0.022475347218930398,
+   0.03450108803531583
+  ],
+  "inward_shift_for_dnu_0p029_linear": 0.9901603388773347,
+  "inward_shift_for_dnu_0p029_quadratic": 0.6485259780230921,
+  "feasibility": "|s|~0.6-1.0 required; end hole at +/-2 would move to +/-(2-|s|) ~ +/-1.0-1.4, colliding with the L3 cavity edge (removed holes were at +/-1). NOT feasible as a standalone route to +0.029.",
+  "Q_collapses": false,
+  "Q_trend": "rises (12664 -> 22038 -> 31132): same deeper-in-gap effect"
+ },
+ "route_A": {
+  "desc": "global rescale, pin MODE to 145 GHz; zero sim cost",
+  "a_um": 577.8758069724138,
+  "mode_in_gap_frac": 0.13224897985520245,
+  "mode_in_gap_pct": 13.224897985520245,
+  "margin_above_lower_GHz": 5.426457262508734,
+  "knob_change": 0.0,
+  "Q_cost": "none (geometry only scaled)",
+  "risk": "mode only 13.2% above lower edge -> confinement/leakage concern"
+ },
+ "route_B": {
+  "desc": "fixed a=638 (midgap@145), knob blue-shift mode to midgap",
+  "a_um": 638.0131800239526,
+  "mode_in_gap_frac": 0.5,
+  "mode_in_gap_pct": 50.0,
+  "margin_above_lower_GHz": 18.582276719740477,
+  "dnu_knob": 0.029086519222818907,
+  "rdef_needed_quad": 1.4371943450655396,
+  "shift_needed_quad_inward": 0.6485259780230921,
+  "Q_cost": "2D Q rises, does not collapse; TRUE out-of-plane radiation-Q cost of r_def/r~1.44 (r~0.43a) unverified in 3D -> flag for AT-2/AT-3"
+ },
+ "route_C": {
+  "desc": "hybrid: partial rescale + partial rdef knob",
+  "at_third_gap": {
+   "in_gap_frac": 0.3333333333333333,
+   "nu_target": 0.2954043580913708,
+   "a_um": 610.7586111456843,
+   "dnu_knob_needed": 0.01590435809137075,
+   "margin_above_lower_GHz": 12.940996378047771,
+   "rdef_needed_quad": 1.2713090329363663,
+   "shift_inward_needed_quad": 0.4273240770021217
+  },
+  "at_quarter_gap": {
+   "in_gap_frac": 0.25,
+   "nu_target": 0.2888132775256467,
+   "a_um": 597.1313267065502,
+   "dnu_knob_needed": 0.009313277525646702,
+   "margin_above_lower_GHz": 9.927244587414663,
+   "rdef_needed_quad": 1.1727227353303538,
+   "shift_inward_needed_quad": 0.2874972737295346
+  },
+  "at_half_gap_==B": {
+   "in_gap_frac": 0.5,
+   "nu_target": 0.30858651922281893,
+   "a_um": 638.0131800239526,
+   "dnu_knob_needed": 0.029086519222818907,
+   "margin_above_lower_GHz": 18.582276719740477,
+   "rdef_needed_quad": 1.4371943450655396,
+   "shift_inward_needed_quad": 0.6485259780230921
+  },
+  "recommended_point": {
+   "in_gap_frac": 0.3333333333333333,
+   "nu_target": 0.2954043580913708,
+   "a_um": 610.7586111456843,
+   "dnu_knob_needed": 0.01590435809137075,
+   "margin_above_lower_GHz": 12.940996378047771,
+   "rdef_needed_quad": 1.2713090329363663,
+   "shift_inward_needed_quad": 0.4273240770021217
+  }
+ }
+}

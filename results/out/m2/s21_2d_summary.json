@@ -1,0 +1,103 @@
+{
+ "task": "M2 2D exploratory L3 + side-coupled W1 S21 ladder (summary)",
+ "rng": "deterministic - no RNG",
+ "meep_version": "1.34.0",
+ "eps_eff": 7.698245769014287,
+ "a_final_um": 602.886947874021,
+ "r_over_a": 0.3,
+ "gap_a_over_lambda": [
+  0.2576086910560098,
+  0.32566092221171666
+ ],
+ "L3": {
+  "Q_of_s": {
+   "0.0": {
+    "nu0": 0.2698183194491378,
+    "GHz": 134.17025776777783,
+    "Q": 14035.233680492276,
+    "parity_x": -0.9999999254903216,
+    "parity_y": 1.0
+   },
+   "0.1": {
+    "nu0": 0.26798393170788054,
+    "GHz": 133.25808739849742,
+    "Q": 11113.611006085572,
+    "parity_x": -0.999999885242793,
+    "parity_y": 1.0
+   },
+   "0.15": {
+    "nu0": 0.2673330046152675,
+    "GHz": 132.93440642686352,
+    "Q": 10960.273299292627,
+    "parity_x": -0.9999998816054211,
+    "parity_y": 1.0
+   },
+   "0.2": {
+    "nu0": 0.26688500223874534,
+    "GHz": 132.71163210056397,
+    "Q": 11819.63107916083,
+    "parity_x": -0.9999998971063917,
+    "parity_y": 1.0
+   }
+  },
+  "s_star": 0.0,
+  "s_star_note": "2D-model optimum (max Q_2d); the 3D radiation-Q optimum ~0.15a is an AT-2 (out-of-scope) result"
+ },
+ "ladder": {
+  "2": {
+   "nu0_coupled": 0.2743017569450497,
+   "GHz": 136.3996985475601,
+   "Q_loaded": 14921.266894873197,
+   "Q_i": 31345.579732082537,
+   "Q_w": 28477.036804688694,
+   "TCMT_Tmin_onres": 0.22659941498017155,
+   "TCMT_absorption_A": 0.4988503599036503,
+   "overcoupled": true
+  },
+  "3": {
+   "nu0_coupled": 0.27097985585695056,
+   "GHz": 134.74784508490686,
+   "Q_loaded": 1800.901932731592,
+   "Q_i": 36962.58299336004,
+   "Q_w": 1893.140064512724,
+   "TCMT_Tmin_onres": 0.0023738621886858244,
+   "TCMT_absorption_A": 0.09269686887819743,
+   "overcoupled": true
+  },
+  "4": {
+   "nu0_coupled": 0.2700319945964775,
+   "GHz": 134.27651018850173,
+   "Q_loaded": 2557.716521646938,
+   "Q_i": 38999.454223615234,
+   "Q_w": 2737.2335869034714,
+   "TCMT_Tmin_onres": 0.004301181398761844,
+   "TCMT_absorption_A": 0.12256442261344604,
+   "overcoupled": true
+  },
+  "5": {
+   "nu0_coupled": 0.2698976556431704,
+   "GHz": 134.20970860130683,
+   "Q_loaded": 4919.301418859249,
+   "Q_i": 39468.795496240295,
+   "Q_w": 5619.732122573479,
+   "TCMT_Tmin_onres": 0.01553456590190286,
+   "TCMT_absorption_A": 0.21820634554527377,
+   "overcoupled": true
+  }
+ },
+ "Qw_exponential_fit": {
+  "form": "ln(Q_w) = alpha*N + beta",
+  "N_used": [
+   3,
+   4,
+   5
+  ],
+  "alpha": 0.5440235687474668,
+  "beta": 5.855483880176716,
+  "R2": 0.9665426984650161,
+  "note": "N=2 excluded: its coupled mode is pushed to nu0=0.2743 (out of guided-band overlap), so it is anomalously weakly coupled"
+ },
+ "coupling_band": "L3 fundamental (Hz odd-x, even-y) couples to the 2nd (even) W1 guided band; the 1st band is parity-forbidden",
+ "TCMT_identity": "on-res T=(gamma_i/(gamma_i+gamma_w))^2=(Q_w/(Q_i+Q_w))^2; A=2 Q_i Q_w/(Q_i+Q_w)^2; verified algebraically per N in 'ladder'",
+ "twoD_caveat": "The 2D W1 is MULTIMODE across the gap; the L3 mode-converts band2<->band1 and radiates, so a clean single-mode standing-wave notch/mirror does NOT form in 2D (mode-resolved band-2 reflection <0.07 on resonance). Q_w,Q_i are from harminv ring-down (coupled vs waveguide-capped). The clean TCMT S21 notch and T_min<0.05 mirror require the single-mode 3D slab W1 (AT-3, out of M2-2D scope)."
+}

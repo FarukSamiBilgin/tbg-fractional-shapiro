@@ -1,0 +1,14 @@
+Figure 3c -- Survival curve W_1/2(Gamma), the A1 production robustness result (Beenakker tau=0.8 CPR, nu=-2.4, Omega=5, i_ac=3.5; out/survival_curve.json).
+
+Main curve: ensemble-mean noisy half-integer (v=Omega/2) step width, normalized by the deterministic width w_1/2^det=0.2000 Ic (stochastic-Heun Langevin integrator, spp=100, n_transient=150, n_avg=300, n_real=20 realizations per Gamma; RK4 deterministic reference spp=60), plotted vs Gamma on a log axis with error bars = +/-1 std of the per-realization width divided by w_1/2^det. Top axis: the visibility parameter E_J/k_BT = 1/Gamma. Right axis: the same curve read off as an absolute noisy half-step width in units of I_c (survival x w_1/2^det).
+
+Gamma* = 0.028 <-> E_J/k_BT = 35.71 marks the 50%-survival visibility criterion (bracketed between the measured Gamma=0.028 (survival=0.500) and Gamma=0.042 (survival=0.375) grid points): E_J/k_BT > 35.7 is required for the half-integer step to retain more than half of its deterministic width.
+
+Three labelled points (stars):
+  - v0.3 production: Gamma=0.014 (Ic=300 nA, T_op=100 mK) -> survival=0.75, all 20 realizations individually above 50% (frac_real_above_50pct=1.00).
+  - Ic=100 nA equivalent: Gamma=0.042 -> survival=0.375, below the 50% criterion (Ic = 100 nA (Gamma = 0.042) gives survival = 0.375. This is < 50%, so 100 nA does NOT suffice; the full 300 nA widening is needed.).
+  - v0.2 archive: Gamma=0.14 (Ic=30 nA, T_op=100 mK) -> survival=0.375.
+
+Shaded/hatched tail (Gamma >~ 0.042): the unresolved detection floor. Beyond this Gamma the ensemble-mean width flattens and becomes non-monotonic (0.050-0.075 Ic across Gamma=0.07..0.39, including the v0.2 archive point at Gamma=0.14), because the measured width has quantized to 2-3 cells of the i_dc grid step (numerics.v_resolution=0.01667 Ic; i_dc grid step=0.025 Ic) -- the residual apparent non-monotonicity there is this discretization "width quantum", not a physical recovery of visibility.
+
+Seeds (seed_formula = 20260725000 + round(1000*Gamma)): Gamma=0.007: seed 20260725007, Gamma=0.014: seed 20260725014, Gamma=0.021: seed 20260725021, Gamma=0.028: seed 20260725028, Gamma=0.042: seed 20260725042, Gamma=0.07: seed 20260725070, Gamma=0.1: seed 20260725100, Gamma=0.14: seed 20260725140, Gamma=0.21: seed 20260725210, Gamma=0.28: seed 20260725280, Gamma=0.39: seed 20260725390.

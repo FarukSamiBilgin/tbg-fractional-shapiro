@@ -1,0 +1,96 @@
+{
+  "task": "M1 production refinement (brief Sec.4 items 1-2)",
+  "params": {
+    "theta_design_deg": 1.025,
+    "hbar_vF_meV_nm": 620.0,
+    "wAB_meV": 110.0,
+    "wAA_over_wAB": 0.8,
+    "grid": "24x24",
+    "n_k_points": 576
+  },
+  "W_convergence": {
+    "W_24x24_N3_meV": 2.922581,
+    "W_24x24_N4_meV": 2.922032,
+    "W_24x24_N5_meV": 2.922031,
+    "drift_N3_N4_meV": 0.000548,
+    "drift_N4_N5_meV": 1e-06,
+    "dims": {
+      "N3": 196,
+      "N4": 324,
+      "N5": 484
+    },
+    "note": "brief claim: N=3 already converged to 0.01 meV; verified at 24x24 -- both cutoff drifts are the measured values above"
+  },
+  "remote_band_gap": {
+    "gap_above_meV": 24.42267,
+    "gap_below_meV": 24.42267,
+    "gap_above_over_drive": 40.7045,
+    "gap_below_over_drive": 40.7045,
+    "drive_photon_meV": 0.6,
+    "above": {
+      "remote_min": {
+        "i": 16,
+        "j": 15,
+        "k_frac": [
+          0.666667,
+          0.625
+        ],
+        "k_vec_invnm": [
+          0.010992,
+          0.590188
+        ],
+        "E_meV": 25.883686
+      },
+      "flat_upper_max": {
+        "i": 16,
+        "j": 16,
+        "k_frac": [
+          0.666667,
+          0.666667
+        ],
+        "k_vec_invnm": [
+          0.0,
+          0.609227
+        ],
+        "E_meV": 1.461016
+      },
+      "indirect": true
+    },
+    "below": {
+      "flat_lower_min": {
+        "i": 16,
+        "j": 16,
+        "k_frac": [
+          0.666667,
+          0.666667
+        ],
+        "k_vec_invnm": [
+          0.0,
+          0.609227
+        ],
+        "E_meV": -1.461016
+      },
+      "remote_below_max": {
+        "i": 15,
+        "j": 16,
+        "k_frac": [
+          0.625,
+          0.666667
+        ],
+        "k_vec_invnm": [
+          -0.010992,
+          0.590188
+        ],
+        "E_meV": -25.883686
+      },
+      "indirect": true
+    },
+    "flat_manifold": {
+      "E_flat_lower_min_meV": -1.461016,
+      "E_flat_upper_max_meV": 1.461016,
+      "E_remote_above_min_meV": 25.883686,
+      "E_remote_below_max_meV": -25.883686
+    }
+  },
+  "runtime_s": 0.0
+}

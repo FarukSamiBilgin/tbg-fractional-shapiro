@@ -1,0 +1,41 @@
+{
+ "task": "M2 cavity-tuning pre-screen: Route-A analytic rescale",
+ "rng": "deterministic - no RNG",
+ "route": "A: global geometric rescale, pin MODE to 145 GHz",
+ "inputs": {
+  "f0_GHz": 145.0,
+  "lambda0_um": 2067.534193103448,
+  "nu_mode_3d": 0.2795,
+  "nu_mode_3d_smoke_ref": 0.27952492123165784,
+  "gap3d_a_over_lambda": [
+   0.2690400358284745,
+   0.34813300261716335
+  ],
+  "gap3d_width": 0.07909296678868882,
+  "gap3d_midgap": 0.30858651922281893,
+  "a_midgap_pinned_um": 638.0131800239526
+ },
+ "route_A": {
+  "a_prime_um": 577.8758069724138,
+  "a_prime_rule": "a' = nu_mode * lambda0 (mode pinned to 145 GHz)",
+  "a_prime_um_using_smoke_nu": 577.9273324710006,
+  "mode_GHz_at_a_prime": 145.00000000000003,
+  "gap_edges_GHz_at_a_prime": [
+   139.57354273749127,
+   180.6056721985284
+  ],
+  "gap_midgap_GHz_at_a_prime": 160.08960746800983,
+  "margin_145_above_lower_edge_GHz": 5.426457262508734,
+  "margin_upper_edge_above_145_GHz": 35.605672198528396,
+  "mode_in_gap_fraction_above_lower_edge": 0.13224897985520245,
+  "mode_in_gap_pct_above_lower_edge": 13.224897985520245,
+  "risk": "mode only ~13.2% of the gap width above the lower band edge -> weaker vertical/in-plane confinement, higher leakage; but ZERO extra simulation cost"
+ },
+ "reference_midgap_pin": {
+  "a_midgap_um": 638.0131800239526,
+  "mode_GHz_at_a_midgap": 131.33269755940503,
+  "gap_this_is_the_131p3_problem": true,
+  "dnu_mode_to_midgap_fixed_a": 0.029086519222818907,
+  "note": "at the midgap-pinned a the mode lands at 131.33 GHz (the 131.3 GHz problem); Route B must blue-shift the mode by +0.0291 in nu to reach midgap=145 GHz at fixed a"
+ }
+}

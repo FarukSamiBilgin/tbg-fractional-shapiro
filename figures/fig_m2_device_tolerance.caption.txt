@@ -1,0 +1,24 @@
+Figure -- Device-specific cavity-line fabrication tolerance at the device lattice constant a = 586.735 um (out/m2/device_tolerance.json).
+
+The +-2%/+-5%/+-2% (r/a, t/a, a) box had only ever been evaluated on the BULK gap at the AT-0 midgap-centred a = 638.01 um, where 145 GHz sits mid-gap with ~+-15 GHz margins. The DEVICE uses the cavity-line a, where the cavity line sits only +7.53 GHz above the lower gap edge - so the lower edge, not the upper, is the binding constraint. This figure closes that item.
+
+Baseline (unperturbed): cavity line nu0 = 0.2837803 -> 144.998 GHz, lower TE gap edge 137.466 GHz, upper edge 177.879 GHz; margin to the lower edge +7.532 GHz. The re-run reproduces the stored cavity line to 0.0029 GHz (5.70e-06 in nu).
+
+Panel (a): signed shift of the cavity line (blue, MEASURED by new 3D FDTD runs at res 18 + subpixel averaging in the established isolated-L3 16a supercell) and of the lower gap edge (red, REUSED from the bulk tolerance study out/m2/tolerance.json - MPB run_zeven, res 20, K/M edge k-points - transferred to the device a by Maxwell scale invariance f = nu c / a; no bulk band structure was re-run). The two bars move in the same direction on every axis: the perturbations blue- or red-shift the whole photonic structure together, so the margin erodes only by the DIFFERENCE of the two bars.
+
+Panel (b): the deliverable. Margin = cavity line - lower gap edge, per case. Green bars are in-gap (margin > 0); the red vertical line at 0 is the failure boundary.
+                     r/a +2%: line 145.879 GHz (+0.882), edge 138.248 GHz (+0.782), margin +7.631 GHz (+0.100 vs baseline), in_gap=True
+                     r/a -2%: line 144.114 GHz (-0.883), edge 136.771 GHz (-0.695), margin +7.344 GHz (-0.188 vs baseline), in_gap=True
+                     t/a +5%: line 143.779 GHz (-1.219), edge 136.113 GHz (-1.353), margin +7.665 GHz (+0.134 vs baseline), in_gap=True
+                     t/a -5%: line 146.956 GHz (+1.959), edge 139.229 GHz (+1.763), margin +7.727 GHz (+0.196 vs baseline), in_gap=True
+           worst (r,t) stack: line 142.877 GHz (-2.121), edge 135.418 GHz (-2.048), margin +7.459 GHz (-0.073 vs baseline), in_gap=True
+
+The a-axis is analytic, not simulated: nu = a/lambda depends only on (r/a, t/a, eps), so a -> a(1+da) sends every frequency to f/(1+da). A +-2% error in a therefore moves the 145 GHz line by -2.84 / +2.96 GHz, but moves the gap edges by the SAME factor - so it changes the margin only by -0.15 / +0.15 GHz. The a-error is a cavity/qubit DETUNING axis, not an in-gap axis.
+
+KEY STRUCTURAL RESULT: the margin is NOT monotonic across the box. Three of the four single perturbations (r +2%, t +5%, t -5%) move the cavity line MORE than they move the lower gap edge and therefore INCREASE the margin; only r -2% erodes it. The L3 donor mode is derived from, and tracks, the dielectric band edge that forms the lower gap boundary, so the mode's binding depth in the gap is far more robust than either frequency separately. Consequently the box minimum is NOT at a corner: on the t axis the measured margin shifts are +0.1959 GHz at t -5% and +0.1338 GHz at t +5%, both positive, so a quadratic through the three measured t points puts the in-box t minimum at +0.47% (-0.0015 GHz) - i.e. essentially at NOMINAL thickness. On the r axis the response is concave, so its minimum is the endpoint r -2% (-0.1880 GHz).
+
+Worst case over the full box is therefore r/a -2% at NOMINAL t/a, with the analytic a +2% factor applied: minimum margin +7.198 GHz (+7.342 GHz on (r,t) alone), i.e. only 0.333 GHz (4.4%) of the 7.532 GHz baseline margin is consumed. The cavity line stays inside the gap across the whole box: True. Binding axis: r/a -2%.
+
+The 'worst (r,t) stack' row is a CROSS-CHECK, not the worst point: it is the corner ['r_lo', 't_hi'] that linear superposition of the single-axis margin shifts predicts to be the worst corner, run directly to test that superposition. Predicted margin shift -0.0542 GHz, measured -0.0729 GHz, residual -0.0188 GHz - superposition holds to ~0.02 GHz over the full box, but its worst CORNER (+7.459 GHz) is milder than the worst EDGE point r -2% (+7.344 GHz). A corner-only worst-case search - the method used for the bulk-gap box in out/m2/tolerance.json - would have missed the true minimum here.
+
+Caveat stated for the record: the 16a supercell's Q ~ 8.6e3 is a known lateral-leakage artifact (physical ceiling 2.7-3.0e4, decisions.md 2026-07-24 AT-2 CLOSED). It is irrelevant to this figure, which reports only FREQUENCY shifts; the mode frequency is converged in this cell, and it is the same cell that defined the stored nu0 fixing the device a, so every case is differenced against its own baseline.

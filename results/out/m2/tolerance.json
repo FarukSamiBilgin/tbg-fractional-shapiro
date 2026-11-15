@@ -1,0 +1,236 @@
+{
+ "task": "M2 tolerance study (brief item 3): r/a, t/a, a fabrication sensitivity",
+ "rng": "deterministic - no RNG",
+ "versions": {
+  "python": "3.13.14",
+  "meep_mpb": "1.34.0"
+ },
+ "key_insight_a_analytic": "nu=a/lambda depends only on r/a,t/a,eps (Maxwell scale invariance); f=nu*c/a scales as 1/a, so +2% in a => -1.961% in every frequency, -2% in a => +2.041%. No simulation needed for a.",
+ "config": {
+  "r0": 0.3,
+  "t0": 0.5,
+  "eps_core": 11.68,
+  "supercell_z_a": 4.0,
+  "res_inplane": 20,
+  "res_z_px": 80,
+  "num_bands": 8,
+  "solver": "run_zeven (TE-like, even about z=0)",
+  "dr_frac": 0.02,
+  "dt_frac": 0.05,
+  "da_frac": 0.02,
+  "edge_kpoints": {
+   "lower_edge_K_reduced": [
+    -0.3333333333333333,
+    0.3333333333333333
+   ],
+   "lower_band_index": 0,
+   "upper_edge_M_reduced": [
+    0.0,
+    0.5
+   ],
+   "upper_band_index": 1
+  }
+ },
+ "constants": {
+  "f0_GHz": 145.0,
+  "lambda0_um": 2067.534193103448,
+  "c_um_GHz": 299792.458,
+  "a_design_um": 638.0131800239526
+ },
+ "sanity_vs_at0_slab3d": {
+  "at0_res20_lo_nu": 0.2690400358284745,
+  "my_res20_lo_nu": 0.2690400273687823,
+  "lo_rel_err_pct": -3.144399010528527e-06,
+  "at0_res20_hi_nu": 0.34813300261716335,
+  "my_res20_hi_nu": 0.3481329933014979,
+  "hi_rel_err_pct": -2.6758926591902858e-06,
+  "at0_res20_mid_nu": 0.30858651922281893,
+  "my_res20_mid_nu": 0.30858651033514006,
+  "mid_rel_err_pct": -2.880125448455473e-06,
+  "note": "same res (20), same 2 edge k-points -> expect match to num. precision",
+  "max_abs_rel_err_pct": 3.144399010528527e-06,
+  "within_0p2pct": true
+ },
+ "baseline_GHz": {
+  "lo": 126.41771930518188,
+  "hi": 163.58227234245436,
+  "mid": 144.9999958238181,
+  "gap_width": 37.16455303727248,
+  "margin_each_side": 18.58227234245436
+ },
+ "table": {
+  "baseline": {
+   "r_over_a": 0.3,
+   "t_over_a": 0.5,
+   "lo_edge_nu": 0.2690400273687823,
+   "hi_edge_nu": 0.3481329933014979,
+   "lo_edge_GHz": 126.41771930518188,
+   "hi_edge_GHz": 163.58227234245436,
+   "midgap_GHz": 144.99999582381813,
+   "gap_width_GHz": 37.16455303727248,
+   "midgap_shift_GHz": -4.176181874981921e-06,
+   "lo_edge_shift_GHz": 0.0,
+   "hi_edge_shift_GHz": 0.0,
+   "margin_to_lo_GHz": 18.582280694818124,
+   "margin_to_hi_GHz": 18.58227234245436,
+   "margin_min_GHz": 18.58227234245436,
+   "f0_in_gap": true
+  },
+  "r_lo (-2%)": {
+   "r_over_a": 0.294,
+   "t_over_a": 0.5,
+   "lo_edge_nu": 0.26767945684529837,
+   "hi_edge_nu": 0.3425236315049098,
+   "lo_edge_GHz": 125.77840840332516,
+   "hi_edge_GHz": 160.94652058455603,
+   "midgap_GHz": 143.3624644939406,
+   "gap_width_GHz": 35.16811218123087,
+   "midgap_shift_GHz": -1.6375355060594075,
+   "lo_edge_shift_GHz": -0.6393109018567174,
+   "hi_edge_shift_GHz": -2.6357517578983334,
+   "margin_to_lo_GHz": 19.22159159667484,
+   "margin_to_hi_GHz": 15.946520584556026,
+   "margin_min_GHz": 15.946520584556026,
+   "f0_in_gap": true
+  },
+  "r_hi (+2%)": {
+   "r_over_a": 0.306,
+   "t_over_a": 0.5,
+   "lo_edge_nu": 0.27057082200184923,
+   "hi_edge_nu": 0.354449985291547,
+   "lo_edge_GHz": 127.13701586536126,
+   "hi_edge_GHz": 166.55052850887404,
+   "midgap_GHz": 146.84377218711765,
+   "gap_width_GHz": 39.413512643512775,
+   "midgap_shift_GHz": 1.8437721871176507,
+   "lo_edge_shift_GHz": 0.7192965601793873,
+   "hi_edge_shift_GHz": 2.9682561664196783,
+   "margin_to_lo_GHz": 17.862984134638737,
+   "margin_to_hi_GHz": 21.550528508874038,
+   "margin_min_GHz": 17.862984134638737,
+   "f0_in_gap": true
+  },
+  "t_lo (-5%)": {
+   "r_over_a": 0.3,
+   "t_over_a": 0.475,
+   "lo_edge_nu": 0.2724902031784135,
+   "hi_edge_nu": 0.35197529512722214,
+   "lo_edge_GHz": 128.0389031911678,
+   "hi_edge_GHz": 165.38771013712267,
+   "midgap_GHz": 146.71330666414525,
+   "gap_width_GHz": 37.34880694595486,
+   "midgap_shift_GHz": 1.7133066641452501,
+   "lo_edge_shift_GHz": 1.6211838859859284,
+   "hi_edge_shift_GHz": 1.8054377946683076,
+   "margin_to_lo_GHz": 16.961096808832195,
+   "margin_to_hi_GHz": 20.387710137122667,
+   "margin_min_GHz": 16.961096808832195,
+   "f0_in_gap": true
+  },
+  "t_hi (+5%)": {
+   "r_over_a": 0.3,
+   "t_over_a": 0.525,
+   "lo_edge_nu": 0.2663922142967022,
+   "hi_edge_nu": 0.3451317271111165,
+   "lo_edge_GHz": 125.17355317498748,
+   "hi_edge_GHz": 162.17202409602638,
+   "midgap_GHz": 143.67278863550692,
+   "gap_width_GHz": 36.9984709210389,
+   "midgap_shift_GHz": -1.3272113644930812,
+   "lo_edge_shift_GHz": -1.244166130194401,
+   "hi_edge_shift_GHz": -1.410248246427983,
+   "margin_to_lo_GHz": 19.826446825012525,
+   "margin_to_hi_GHz": 17.172024096026377,
+   "margin_min_GHz": 17.172024096026377,
+   "f0_in_gap": true
+  },
+  "a_lo (-2%)": {
+   "a_um": 625.2529164234735,
+   "da_frac": -0.02,
+   "lo_edge_GHz": 128.99767276038966,
+   "hi_edge_GHz": 166.92068606372894,
+   "midgap_GHz": 147.9591794120593,
+   "gap_width_GHz": 37.923013303339275,
+   "midgap_shift_GHz": 2.9591794120593136,
+   "lo_edge_shift_GHz": 2.579953455207786,
+   "hi_edge_shift_GHz": 3.338413721274577,
+   "margin_to_lo_GHz": 16.002327239610338,
+   "margin_to_hi_GHz": 21.920686063728937,
+   "margin_min_GHz": 16.002327239610338,
+   "f0_in_gap": true,
+   "note": "nu fixed by scale invariance; f = nu*c/a (exact)"
+  },
+  "a_hi (+2%)": {
+   "a_um": 650.7734436244317,
+   "da_frac": 0.02,
+   "lo_edge_GHz": 123.93894049527633,
+   "hi_edge_GHz": 160.3747768063278,
+   "midgap_GHz": 142.15685865080206,
+   "gap_width_GHz": 36.43583631105146,
+   "midgap_shift_GHz": -2.8431413491979356,
+   "lo_edge_shift_GHz": -2.478778809905549,
+   "hi_edge_shift_GHz": -3.2074955361265722,
+   "margin_to_lo_GHz": 21.061059504723673,
+   "margin_to_hi_GHz": 15.374776806327787,
+   "margin_min_GHz": 15.374776806327787,
+   "f0_in_gap": true,
+   "note": "nu fixed by scale invariance; f = nu*c/a (exact)"
+  }
+ },
+ "sensitivities": {
+  "d_fmid_d_rOa_GHz_per_pct": 0.8703269232942645,
+  "d_fmid_d_tOa_GHz_per_pct": -0.30405180286383315,
+  "d_fmid_d_a_GHz_per_pct": -1.449999958238181,
+  "d_flo_d_rOa_GHz_per_pct": 0.33965186550902615,
+  "d_fhi_d_rOa_GHz_per_pct": 1.401001981079503,
+  "d_flo_d_tOa_GHz_per_pct": -0.2865350016180329,
+  "d_fhi_d_tOa_GHz_per_pct": -0.32156860410962906,
+  "d_flo_d_a_GHz_per_pct": -1.2641771930518189,
+  "d_fhi_d_a_GHz_per_pct": -1.6358227234245435,
+  "note": "central differences on GHz edges/midgap at a=638.013 um; GHz per 1% change in the named parameter. a-derivatives analytic (scale invariance)."
+ },
+ "worst_case": {
+  "method": "linear superposition of per-parameter slopes over |dr|<=2%, |dt|<=5%, |da|<=2%",
+  "baseline_gap_GHz": [
+   126.41771930518188,
+   163.58227234245436
+  ],
+  "baseline_gap_width_GHz": 37.16455303727248,
+  "f_lo_worst_high_GHz": 131.05805243039373,
+  "f_hi_worst_low_GHz": 155.90077991289812,
+  "worst_case_lower_margin_GHz": 13.94194756960627,
+  "worst_case_upper_margin_GHz": 10.900779912898116,
+  "worst_case_min_margin_GHz": 10.900779912898116,
+  "max_midgap_excursion_GHz": 6.160912777384057,
+  "worst_case_gap_shrink_to_GHz": 24.842727482504387,
+  "f0_stays_in_gap_worst_case": true,
+  "note": "145 GHz is the fixed physical operating line; edges move under fabrication error. Worst case moves BOTH edges toward 145 GHz simultaneously (an over-conservative bound - the a-error cannot actually push both edges inward at once)."
+ },
+ "timings_seconds": [
+  {
+   "config": "baseline",
+   "seconds": 17.7,
+   "res": 20
+  },
+  {
+   "config": "r_lo",
+   "seconds": 15.1,
+   "res": 20
+  },
+  {
+   "config": "r_hi",
+   "seconds": 16.0,
+   "res": 20
+  },
+  {
+   "config": "t_lo",
+   "seconds": 16.9,
+   "res": 20
+  },
+  {
+   "config": "t_hi",
+   "seconds": 11.2,
+   "res": 20
+  }
+ ]
+}

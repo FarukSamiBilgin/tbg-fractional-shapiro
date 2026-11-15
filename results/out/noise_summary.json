@@ -1,0 +1,83 @@
+{
+  "description": "M3 deliverable 2: Langevin thermal rounding of the v=Omega/2 fractional Shapiro step at i_ac=4.0",
+  "grid": {
+    "i_dc_start": 1.0,
+    "i_dc_stop": 8.0,
+    "i_dc_step": 0.025,
+    "n_idc": 281,
+    "i_ac": 4.0
+  },
+  "numerics": {
+    "integrator": "stochastic-Heun (additive noise)",
+    "spp": 100,
+    "n_transient": 150,
+    "n_avg": 300,
+    "n_real": 20,
+    "v_target": 2.5,
+    "tol": 0.025,
+    "v_resolution": 0.016666666666666666,
+    "tol_over_v_res": 1.5,
+    "det_integrator": "RK4 spp=60 150/300 T",
+    "cpr_skew_renorm": 1.1009173660891984
+  },
+  "seeds": {
+    "a_skew_G0.140": 20260722,
+    "b_skew_G0.014": 20260723,
+    "c_sin_G0.140": 20260724,
+    "det_skew_G0": null
+  },
+  "w_det_reference": 0.25,
+  "runs": {
+    "a": {
+      "label": "skew Gamma=0.140",
+      "Gamma": 0.14,
+      "seed": 20260722,
+      "w_half_ensemble_mean": 0.04999999999999982,
+      "w_half_per_real_mean": 0.05874999999999979,
+      "w_half_per_real_std": 0.03285859857023717,
+      "w_half_per_real_min": 0.0,
+      "w_half_per_real_max": 0.12499999999999956
+    },
+    "b": {
+      "label": "skew Gamma=0.014",
+      "Gamma": 0.014,
+      "seed": 20260723,
+      "w_half_ensemble_mean": 0.17499999999999938,
+      "w_half_per_real_mean": 0.17249999999999938,
+      "w_half_per_real_std": 0.01561249499599594,
+      "w_half_per_real_min": 0.14999999999999947,
+      "w_half_per_real_max": 0.1999999999999993
+    },
+    "c": {
+      "label": "sin  Gamma=0.140",
+      "Gamma": 0.14,
+      "seed": 20260724,
+      "w_half_ensemble_mean": 0.02499999999999991,
+      "w_half_per_real_mean": 0.03499999999999988,
+      "w_half_per_real_std": 0.01837117307087377,
+      "w_half_per_real_min": 0.0,
+      "w_half_per_real_max": 0.07499999999999973
+    }
+  },
+  "w_det_on_grid": 0.2499999999999991,
+  "survival_fraction": {
+    "PAPER_NUMBER_a_G0.140": 0.1999999999999993,
+    "b_G0.014": 0.6999999999999975,
+    "c_sin_control_floor_width": 0.02499999999999991,
+    "c_sin_control_floor_fraction": 0.09999999999999964
+  },
+  "dvdi_rounding": {
+    "units": "reduced dV/dI = dv/di_dc, already normalised to Rn (-> 1 far from steps; 0 = ideal dissipationless lock)",
+    "step_center_i_dc": 2.6124999999999945,
+    "dvdi_det_at_center": 4.973799150320701e-13,
+    "dvdi_noisy_a_at_center": 1.191504292380479,
+    "dvdi_noisy_b_at_center": 0.02575864522610516,
+    "dvdi_det_plateau_min": 4.334310688136611e-13,
+    "dvdi_noisy_a_plateau_min": 0.4033379662069123,
+    "dvdi_noisy_b_plateau_min": 0.01404421099750408,
+    "rounding_ratio_a_residual_over_Rn": 0.4033379662069123,
+    "rounding_ratio_b_residual_over_Rn": 0.01404421099750408,
+    "rounding_ratio_a_over_b": 28.7191616729906,
+    "note": "Deterministic step is dissipationless (dV/dI ~ 5e-13 ~ 0). Thermal rounding lifts the flattest point of the step to a residual differential resistance of 0.40 Rn at Gamma=0.14 vs 0.014 Rn at Gamma=0.014. The noisy-vs-deterministic ratio is formally divergent (denominator ~0); the physical rounding measure is the residual dV/dI itself (in units of Rn), and the operating/clean ratio is 28.72."
+  }
+}
