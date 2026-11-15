@@ -53,6 +53,7 @@ Owned files: scripts/run_nu_survival.py, out/nu_survival.json, out/nu_survival.n
 """
 import json
 import math
+import os
 import pathlib
 import sys
 import time
@@ -72,12 +73,8 @@ OUT = ROOT / "out"
 FP = OUT / "fingerprint"
 OUT.mkdir(exist_ok=True)
 
-# checkpoint blocks live in the session scratchpad (not an owned out/ file)
-CKPT = pathlib.Path(
-    r"C:\Users\PROFDR~1.SAM\AppData\Local\Temp\claude"
-    r"\C--Users-prof-dr-f-sami-Desktop-TBG-FOTON-K-JJ--claude-worktrees-m3-junction-kickoff-5b7ffa"
-    r"\25b168c7-1c23-4306-a67b-2b331560356e\scratchpad\nusurv_ckpt"
-)
+# checkpoint blocks (scratch location; override with NUSURV_CKPT)
+CKPT = pathlib.Path(os.environ.get("NUSURV_CKPT", "/path/to/scratch/nusurv_ckpt"))
 CKPT.mkdir(parents=True, exist_ok=True)
 
 FRESH = "--fresh" in sys.argv[1:]
